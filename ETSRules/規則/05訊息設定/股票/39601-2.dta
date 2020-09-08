@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>39601-2</name>
+  <uuid>10e51065-c982-4f1f-926a-64b1386a9929</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'股票庫存'為一個股票庫存在( in ) '股票資訊'的股票庫存;]]>&#13;<![CDATA[
+        指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    ]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"39601" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票資訊' 的股票編碼類別 是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加"總發行股數(G) = " +公式：將( '股票資訊'的單一國內股票發行股數)轉成字串]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A3">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加"實收資本額(H) = " +公式：將( '股票資訊'的單一國內股票實收資本)轉成字串]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加"上限比率(I) = 10% "]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A4">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA["CB"]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[("此次決策金額(F) = " +公式：將( '股票本次下單資訊'的國內股本次下單金額)轉成字串)]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression/>
+            </Action>
+            <Action DefId="A3">
+              <Expression/>
+            </Action>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A4">
+              <Expression>
+                <Param><![CDATA[("(A+B+C+D)/G + (E+F)/H ="+公式：將( (公式：計算( '股票庫存'的型態是( "StkStore" ,編碼類別是"CB" )的總額+ '股票本次下單資訊'的國內股本次下單金額除以'股票資訊'的單一國內股票實收資本)的商+公式：計算( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"STK,PREF,PRIVATESTK,PRIVATEPREF" )的總額除以'股票資訊'的單一國內股票發行股數)的商) * 100 )轉成字串+"%")]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 物件>不是<一個 物件>]]></Text>
+            <Param><![CDATA["CB"]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[(" + 本次買進股數(F) = " +公式：將( '本次決策資訊'的決策數量)轉成字串)]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression/>
+            </Action>
+            <Action DefId="A3">
+              <Expression/>
+            </Action>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A4">
+              <Expression>
+                <Param><![CDATA[("(A+B+C+D+F)/G + E/H = " +公式：將( (公式：計算( '股票庫存'的型態是( "StkStore" ,編碼類別是"CB" )的總額除以'股票資訊'的單一國內股票實收資本)的商+公式：計算( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"STK,PREF,RIVATESTK,PRIVATEPREF" )的總額+ '本次決策資訊'的決策數量除以'股票資訊'的單一國內股票發行股數)的商) * 100 )轉成字串+ "%")]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[上限比率(I)]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[155]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[決策金額]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[141]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[總發行股數(G)]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[143]]></Data>
+      <Data Name="Definitions(A3)#HeaderText"><![CDATA[實收資本額(H)]]></Data>
+      <Data Name="Definitions(A3)#Width"><![CDATA[139]]></Data>
+      <Data Name="Definitions(A4)#HeaderText"><![CDATA[公式]]></Data>
+      <Data Name="Definitions(A4)#Width"><![CDATA[150]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[股票編碼類別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[171]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>534</name>
+  <uuid>ccbbb1cb-1fdf-4a26-a4bf-987a11f7ca8c</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"534" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+則
+    在'檢核項目'的詳細資訊中增加"本次交易國家為：" + '其他資訊'的風險國別;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

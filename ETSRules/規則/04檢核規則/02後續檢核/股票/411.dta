@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>411</name>
+  <uuid>62a2828f-3fda-4354-bcb3-7680325f870a</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"411" ;]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的商品名稱 是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的簡述中增加"國內本公司庫藏股"]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的明細中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA["2867"]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA["[股28]此決策股票為庫藏股：" + '本次決策資訊'的商品名稱+ "，無法由電子下單交易"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 物件>不是<一個 物件>]]></Text>
+            <Param><![CDATA["2867"]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA["[股28]" + '本次決策資訊'的商品名稱+ "不為庫藏股。"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[簡述]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[393]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[68]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[明細]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[71]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[是否為庫藏股]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[392]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

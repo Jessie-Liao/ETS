@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:ilog.rules.studio.model.query.extractor="http://ilog.rules.studio/model/query/extractor.ecore" rulesetName="ETSRules" usingRuleflow="true" ruleflowName="mainflow" targetRuleProjectName="ETSRules">
+  <name>ETSRules</name>
+  <uuid>6b67a695-add7-46e5-9da1-d3a16574ae10</uuid>
+  <referencedVariables variableName="inParam" variableSetName="ETSRulesParameters">
+    <variableSet href="../規則/ETSRulesParameters.var#4766aa87-509d-4932-99bf-1ef36359b847"/>
+  </referencedVariables>
+  <referencedVariables variableName="outParam" variableSetName="ETSRulesParameters" direction="OUT">
+    <variableSet href="../規則/ETSRulesParameters.var#4766aa87-509d-4932-99bf-1ef36359b847"/>
+  </referencedVariables>
+  <ruleflow href="../規則/mainflow.rfl#cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+  <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="ETSRules_extractor" validator="預設驗證器"/>
+  <targetRuleProject href="../../ETSRules#f1bd22b2-0e46-4af3-acea-015858fb944e"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

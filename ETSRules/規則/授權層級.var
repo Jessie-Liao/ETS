@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>授權層級</name>
+  <uuid>63020a24-ed9f-4a87-ae56-430f1f8877e9</uuid>
+  <variables name="Level1" type="int" initialValue="1" verbalization="科主管"/>
+  <variables name="Level2" type="int" initialValue="2" verbalization="部門主管"/>
+  <variables name="Level3" type="int" initialValue="3" verbalization="本部主管"/>
+  <variables name="Level4" type="int" initialValue="4" verbalization="投資長或副投資長"/>
+  <variables name="Level5" type="int" initialValue="5" verbalization="財務長"/>
+  <variables name="Level6" type="int" initialValue="6" verbalization="總經理"/>
+  <variables name="Level7" type="int" initialValue="71" verbalization="董事會"/>
+  <variables name="Level8" type="int" initialValue="72" verbalization="董事長或副董事長"/>
+  <variables name="Level9" type="int" initialValue="8" verbalization="投資系統管理科主管"/>
+</ilog.rules.studio.model.base:VariableSet>

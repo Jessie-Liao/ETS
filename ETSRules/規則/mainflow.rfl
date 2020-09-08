@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>mainflow</name>
+  <uuid>cd20da86-3b99-4b66-b6ca-3c6143616361</uuid>
+  <locale>zh_TW</locale>
+  <categories>any</categories>
+  <rfModel>
+<Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+  <Body>
+    <TaskList>
+      <StartTask Identifier="task_0"/>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="01起始設定" Ordering="Default">
+        <RuleList>
+          <Package Name="01起始設定"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="02不檢查規則" Ordering="Default">
+        <RuleList>
+          <Package Name="02不檢查規則"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="03檢核資料確認" Ordering="Default">
+        <RuleList>
+          <Package Name="03檢核資料確認"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="01前置檢核" Ordering="Default">
+        <RuleList>
+          <Package Name="04檢核規則.01前置檢核"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="02後續檢核" Ordering="Default">
+        <RuleList>
+          <Package Name="04檢核規則.02後續檢核"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="05訊息設定" Ordering="Default">
+        <RuleList>
+          <Package Name="05訊息設定"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="06最終設定" Ordering="Default">
+        <RuleList>
+          <Package Name="06最終設定"/>
+        </RuleList>
+      </RuleTask>
+      <StopTask Identifier="task_1"/>
+    </TaskList>
+    <NodeList>
+      <TaskNode Identifier="node_0" Task="task_0"/>
+      <TaskNode Identifier="node_1" Task="task_1"/>
+      <TaskNode Identifier="node_2" Task="01起始設定"/>
+      <TaskNode Identifier="node_3" Task="02不檢查規則"/>
+      <TaskNode Identifier="node_4" Task="03檢核資料確認"/>
+      <TaskNode Identifier="node_5" Task="01前置檢核"/>
+      <TaskNode Identifier="node_6" Task="02後續檢核"/>
+      <TaskNode Identifier="node_7" Task="05訊息設定"/>
+      <TaskNode Identifier="node_8" Task="06最終設定"/>
+    </NodeList>
+    <TransitionList>
+      <Transition Identifier="transition_2" Source="node_3" Target="node_4"/>
+      <Transition Identifier="transition_3" Source="node_4" Target="node_5"/>
+      <Transition Identifier="transition_4" Source="node_5" Target="node_6"/>
+      <Transition Identifier="transition_5" Source="node_6" Target="node_7"/>
+      <Transition Identifier="transition_6" Source="node_7" Target="node_8"/>
+      <Transition Identifier="transition_7" Source="node_8" Target="node_1"/>
+      <Transition Identifier="transition_13" Source="node_2" Target="node_3"/>
+      <Transition Identifier="transition_0" Source="node_0" Target="node_2"/>
+    </TransitionList>
+  </Body>
+  <Resources>
+    <ResourceSet Locale="zh_TW">
+      <Data Name="node_2#height">40.0</Data>
+      <Data Name="node_4#width">127.34766</Data>
+      <Data Name="node_1#height">18.000017</Data>
+      <Data Name="node_3#height">40.0</Data>
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_4#height">40.0</Data>
+      <Data Name="node_7#y">541.0</Data>
+      <Data Name="node_8#x">63.67383</Data>
+      <Data Name="node_8#y">631.0</Data>
+      <Data Name="node_5#name">node_5</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_5#height">40.0</Data>
+      <Data Name="node_6#height">40.0</Data>
+      <Data Name="node_7#height">40.0</Data>
+      <Data Name="node_7#width">103.34766</Data>
+      <Data Name="node_8#height">40.0</Data>
+      <Data Name="node_2#width">103.34766</Data>
+      <Data Name="node_0#width">21.000004</Data>
+      <Data Name="node_3#y">181.0</Data>
+      <Data Name="node_4#x">63.673798</Data>
+      <Data Name="node_4#y">271.0</Data>
+      <Data Name="node_5#x">63.67383</Data>
+      <Data Name="node_5#y">361.0</Data>
+      <Data Name="node_6#x">63.67383</Data>
+      <Data Name="node_5#width">103.34766</Data>
+      <Data Name="node_6#y">451.0</Data>
+      <Data Name="node_7#x">63.67383</Data>
+      <Data Name="node_0#x">63.67383</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_1#x">63.67383</Data>
+      <Data Name="node_8#name">node_8</Data>
+      <Data Name="node_1#y">710.0</Data>
+      <Data Name="node_2#x">63.67383</Data>
+      <Data Name="node_2#y">91.0</Data>
+      <Data Name="node_3#x">63.67386</Data>
+      <Data Name="node_1#name">node_2</Data>
+      <Data Name="node_3#width">115.34766</Data>
+      <Data Name="node_4#name">node_4</Data>
+      <Data Name="node_8#width">103.34766</Data>
+      <Data Name="node_7#name">node_7</Data>
+      <Data Name="node_1#width">18.0</Data>
+      <Data Name="node_6#name">node_6</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_6#width">103.34766</Data>
+      <Data Name="node_3#name">node_3</Data>
+    </ResourceSet>
+  </Resources>
+  <Properties/>
+</Ruleflow></rfModel>
+</ilog.rules.studio.model.ruleflow:RuleFlow>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>519-2</name>
+  <uuid>5f5e159a-ef90-4582-9ee0-d9eec28c9dc6</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"519" ;
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'其他資訊'的該組別在N日間是否有反向交易不成立
+則
+    設定'檢核項目'的是否通過為成立;
+    在'檢核項目'的簡述中增加"國內股票三日反向交易限制" ;
+    在'檢核項目'的明細中增加"本次決策" ;
+    在'檢核項目'的明細中增加"組別名稱：" + '本次決策資訊'的組別名稱;
+    在'檢核項目'的明細中增加"標的：" + '本次決策資訊'的商品名稱;
+    在'檢核項目'的明細中增加"於" +公式:取得( '股票資訊'的反向檢查營業日)的字串+ "後含反向交易" ;
+    設定'檢核項目'的是否需要覆核為成立;
+    設定'檢核項目'的審核層級為'投資長或副投資長' ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>526</name>
+  <uuid>bbb8cc9a-014e-41ff-b159-ec8781a1d57a</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+ 指定'本次決策資訊'為一個 本次決策資訊從(from) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+ 指定'其他資訊'為一個 其他資訊從(from) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+ 指定'債券資訊'為一個 債券資訊從(from) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+ 指定'信用評等'為一個 信用評等從(from) '決策基本資料'的信用評等;]]>&#13;<![CDATA[
+ 指定'債券投資總額'為一個 債券投資總額從(from) '債券資訊'的債券投資總額;]]>&#13;<![CDATA[
+ 指定'次順位金融債評等投資總額'為一個評等投資總額在( in ) '債券投資總額'的所有發行評等投資總額]]>&#13;<![CDATA[
+            其中：這個評等投資總額的債券類別是"FB2" ;]]>&#13;<![CDATA[
+ 指定'檢核項目'為一個 檢核項目在(in) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+         其中：這個 檢核項目的RuleID是"526" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA[公式：計算( '債券資訊'的本次決策金額 + '次順位金融債評等投資總額'的BBB等級以下債券總額 除以'本公司核定國外投資額度或保險業主權益金額_高'   )的商大於等於<一個 數字>小於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'   的90% 預警為<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的90% 預警指示為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+            <Param><![CDATA['本公司核定國外投資額度或保險業主權益限額比例_高' * 0.9]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["未達90%預警標準"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA['本公司核定國外投資額度或保險業主權益限額比例_高'  * 0.9]]></Param>
+            <Param><![CDATA['本公司核定國外投資額度或保險業主權益限額比例_高']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["已達90%預警標準"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+            <Param><![CDATA['本公司核定國外投資額度或保險業主權益限額比例_高']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+            <Action DefId="A2">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[268]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[90% 預警]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[337]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[90% 預警指示]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[142]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[債券發行評等為BBB(含)以下等級次順位金融債投資總額 < 核定國外投資額度*7.5%或 < 保險業主權益*30% ]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[408]]></Data>
+      <Data Name="Definitions(C0)[0]#HeaderText"><![CDATA[大於等於]]></Data>
+      <Data Name="Definitions(C0)[1]#HeaderText"><![CDATA[小於]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

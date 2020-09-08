@@ -1,0 +1,146 @@
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>部署報告 - ETSRulesApp</title>
+<style type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: x-small;
+}
+
+table {
+    margin-bottom: 5px;
+    background-image: url(img/bg_header.jpg);
+    width: 100%;
+    border-collapse:collapse;
+}
+
+span.title {
+    color: #FFFFFF;
+    font-size: medium;
+    margin: 0;
+    padding: 0 0 0 10px;
+    width: 105%;
+}
+
+span.section {
+    color: #003366;
+    border-bottom: 1px solid #00000;
+    font-size: small;
+    margin: 0 3% 0 3%;
+    padding: 3px;
+    width: 94%;
+}
+
+span.end {
+    border: 0;
+}
+
+span.value {
+    font-variant: italic;
+    margin-right: 5px;
+    background-color: #EEEEEE;
+}
+
+ul {
+    width: 94%;
+    margin: 0 3% 10px 3%;
+    padding: 0;
+}
+
+li {
+    padding: 1px 1px 1px 7px;
+    list-style: none;
+    background-color: #FFFFFF;
+    vertical-align: top;
+}
+
+li.bandit {
+    background-color: #F9F9FD;
+}
+
+span.message {
+    vertical-align: top;
+}
+
+div.exception {
+    margin: 0 5px 5px 10px;
+    padding: 3px;
+    background-color: #EEEEEE;
+    border: 1px solid #999999;
+}
+        </style>
+</head>
+<body>
+<table>
+<tr>
+<td nowrap style="background-image:url(img/bg_header.jpg);">
+<table>
+<tr>
+<td valign="middle" nowrap style="background-image:url(img/title_left.jpg)"><span class="title">部署報告 - ETSRulesApp</span>
+<br>
+</td><td><img src="img/title_right.jpg" alt=""></td>
+</tr>
+</table>
+</td><td valign="middle" align="right" nowrap style="padding-right:10px;"><img src="img/IBM_1px_white_no_border.gif" alt=""></td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="middle" height="20"></td>
+</tr>
+</table>
+<span class="section">RuleApp 資訊 - ETSRulesApp</span>
+<ul>
+<li>
+<img src="img/info.png" alt="檔名：ETSTESTRulesApp.jar"><span class="message">檔名：ETSTESTRulesApp.jar</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="版本：1.0"><span class="message">版本：1.0</span>
+</li>
+</ul>
+<span class="section">規則集資訊 - ETSRules</span>
+<ul>
+<li>
+<img src="img/info.png" alt="檔名：ETSRules.dsar"><span class="message">檔名：ETSRules.dsar</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="版本：1.94"><span class="message">版本：1.94</span>
+</li>
+</ul>
+<span class="section">XOM 部署</span>
+<ul>
+<li>
+<img src="img/info.png" alt="決策作業 'ETSRules' 會參照下列目標規則專案：[ETSRules]。"><span class="message">決策作業 'ETSRules' 會參照下列目標規則專案：[ETSRules]。</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="找到規則專案 'ETSRules' 的下列 XOM 資源：[C:\Users\Administrator\Desktop\workspace\ETSTEST\ETSRules\資源\ETSXOM.jar]。"><span class="message">找到規則專案 'ETSRules' 的下列 XOM 資源：[C:\Users\Administrator\Desktop\workspace\ETSTEST\ETSRules\資源\ETSXOM.jar]。</span>
+</li>
+<li>
+<img src="img/info.png" alt="資源 'ETSXOM.jar' 已隨版本 '37.0' 部署在 res (http://localhost:9081/res/)。正在跳過它。"><span class="message">資源 'ETSXOM.jar' 已隨版本 '37.0' 部署在 res (http://localhost:9081/res/)。正在跳過它。</span>
+</li>
+</ul>
+<span class="section">RuleApp 建置狀態</span>
+<ul>
+<li>
+<img src="img/info.png" alt=""><span class="message"></span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="RuleApp 檔已寫入至：C:\Users\Administrator\Desktop\workspace\ETSTEST\ETSRules\輸出\ETSTESTRulesApp.jar"><span class="message">RuleApp 檔已寫入至：C:\Users\Administrator\Desktop\workspace\ETSTEST\ETSRules\輸出\ETSTESTRulesApp.jar</span>
+</li>
+<li>
+<img src="img/info.png" alt="RuleApp 建置已完成，沒有發生錯誤。"><span class="message">RuleApp 建置已完成，沒有發生錯誤。</span>
+</li>
+</ul>
+<span class="section">RuleApp 部署</span>
+<ul>
+<li>
+<img src="img/info.png" alt="已順利將規則集 'ETSRules' 的 '1.94' 版本部署至 res (http://localhost:9081/res/)。"><span class="message">已順利將規則集 'ETSRules' 的 '1.94' 版本部署至 res (http://localhost:9081/res/)。</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="RuleApp 已順利部署至 res (http://localhost:9081/res/)。"><span class="message">RuleApp 已順利部署至 res (http://localhost:9081/res/)。</span>
+</li>
+</ul>
+<span class="section end">部署成功</span>
+</body>
+</html>

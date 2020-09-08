@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>利率交換</name>
+  <uuid>f2355ec0-fec9-4b45-930c-abcf500ae25a</uuid>
+</ilog.rules.studio.model.base:RulePackage>

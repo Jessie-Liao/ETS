@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>05訊息設定</name>
+  <uuid>422b3304-de13-4d78-8e4d-86d7bfe64cf2</uuid>
+</ilog.rules.studio.model.base:RulePackage>

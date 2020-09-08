@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>期貨+選擇權</name>
+  <uuid>59089334-155b-43d8-a4a8-2e0bce504068</uuid>
+</ilog.rules.studio.model.base:RulePackage>

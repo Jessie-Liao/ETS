@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>449</name>
+  <uuid>c7c925df-b0e2-4485-86ee-bb4b5ca9a4f1</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'股票庫存'為一個股票庫存在( in ) '股票資訊'的股票庫存;]]>&#13;<![CDATA[
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'信用評等'為一個信用評等從( from ) '決策基本資料'的信用評等;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'債券投資總額'為一個債券投資總額從( from ) '債券資訊'的債券投資總額;]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"449" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的商品別 是<一些 字串>  中的一個]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券資訊' 的順位 是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['最佳信評分數'大於等於<一個 數字> 小於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA['信用評等'的債券信評分數大於等於<一個 數字> 小於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C5">
+          <Properties>
+            <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+          </Properties>
+          <ExpressionDefinition>
+            <Text><![CDATA[('最佳信評分數'等於'信用評等' 的債券信評分數) 是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C4">
+          <Properties>
+            <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+          </Properties>
+          <ExpressionDefinition>
+            <Text><![CDATA['債券資訊' 的是否有在公會可投資發行人清單 是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否需要檢核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加 <一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A3">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加 <一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[{ "GLBOND" }]]></Param>
+          </Expression>
+          <Partition DefId="C2">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["1"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                    <Param><![CDATA['BB']]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不通過"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression/>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                    <Param><![CDATA['BB+']]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression/>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA['BB+']]></Param>
+                    <Param><![CDATA['BB']]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A3">
+                          <Expression/>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C4">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA["因沒有在公會所報保險業得投資發行或保證公司之信用評等等級為國外信用評等機構評定為 BB+或相當等級之公司債、非本國企業發行可轉換公司債及附認股權公司債之明細，故本規則不通過"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["2"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                        <Param><![CDATA['BB']]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不通過"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A3">
+                          <Expression/>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                        <Param><![CDATA['BB+']]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不檢查"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A3">
+                          <Expression/>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA['BB+']]></Param>
+                        <Param><![CDATA['BB']]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A3">
+                          <Expression/>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[{ "GLSTK" }]]></Param>
+          </Expression>
+          <Partition DefId="C2">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["1"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                    <Param><![CDATA['BB']]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不通過"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression/>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                    <Param><![CDATA['BB+']]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression/>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA['BB+']]></Param>
+                    <Param><![CDATA['BB']]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C4">
+                        <Condition>
+                          <Expression/>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression/>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C4">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA["因沒有在公會所報保險業得投資發行或保證公司之信用評等等級為國外信用評等機構評定為 BB+或相當等級之公司債、非本國企業發行可轉換公司債及附認股權公司債之明細，故本規則不通過"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["2"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                        <Param><![CDATA['BB']]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不通過"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A3">
+                          <Expression/>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                        <Param><![CDATA['BB+']]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品信評："+'最佳信評資訊'+ "故本規則不檢查"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A3">
+                          <Expression/>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA['BB+']]></Param>
+                        <Param><![CDATA['BB']]></Param>
+                      </Expression>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Param/>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA["本商品信評："+'最佳信評資訊']]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A3">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="/0/0/0/A#Height"><![CDATA[20]]></Data>
+      <Data Name="/0/0/1/A#Height"><![CDATA[20]]></Data>
+      <Data Name="/0/0/2/1/0/A#Height"><![CDATA[20]]></Data>
+      <Data Name="/0/0/2/1/1/A#Height"><![CDATA[20]]></Data>
+      <Data Name="/0/1/0/0/A#Height"><![CDATA[20]]></Data>
+      <Data Name="/0/1/1/0/A#Height"><![CDATA[20]]></Data>
+      <Data Name="/0/1/2/0/A#Height"><![CDATA[20]]></Data>
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[100]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[本商品信評]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[102]]></Data>
+      <Data Name="Definitions(A1)[0]#HeaderText"><![CDATA[評等]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[是否需要檢核]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[88]]></Data>
+      <Data Name="Definitions(A3)#HeaderText"><![CDATA[ 沒有在公會名單中的檢核訊息]]></Data>
+      <Data Name="Definitions(A3)#Width"><![CDATA[73]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[商品別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[99]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[最佳信評分數]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[109]]></Data>
+      <Data Name="Definitions(C1)[0]#HeaderText"><![CDATA[大於等於]]></Data>
+      <Data Name="Definitions(C1)[1]#HeaderText"><![CDATA[小於]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[債券順位]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[98]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[債券信評分數]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[108]]></Data>
+      <Data Name="Definitions(C3)[0]#HeaderText"><![CDATA[大於等於]]></Data>
+      <Data Name="Definitions(C3)[1]#HeaderText"><![CDATA[小於]]></Data>
+      <Data Name="Definitions(C4)#HeaderText"><![CDATA[是否有在公會可投資發行人清單]]></Data>
+      <Data Name="Definitions(C4)#Width"><![CDATA[81]]></Data>
+      <Data Name="Definitions(C5)#HeaderText"><![CDATA[是否有債券信評]]></Data>
+      <Data Name="Definitions(C5)#Width"><![CDATA[80]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

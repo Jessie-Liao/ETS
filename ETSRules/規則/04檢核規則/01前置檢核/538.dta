@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>538</name>
+  <uuid>4fd8c21a-60d6-4ec1-86f3-4aabab5425bd</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'信用評等'為一個信用評等 從( from ) '決策基本資料' 的信用評等 ; ]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"538" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA[('信用評等'的債券信評分數大於等於1小於999)是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否需要檢核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[不成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["該債券沒有債券信用評等，故本規則不通過"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["本商品信評："+'信用評等' 的債券信評資訊]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否需要檢核]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[124]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[詳細資訊]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[180]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[180]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[券評是否有值]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[332]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

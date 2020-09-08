@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>最佳信評_券評優先發行保證其次</name>
+  <uuid>580328a1-fe2f-4d5a-ae34-ee8d0bea4487</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'信用評等'為一個信用評等從( from ) '決策基本資料'的信用評等;
+如果
+    '信用評等'的債券信評分數大於等於1
+    並且'信用評等'的債券信評分數不等於999
+則
+    設定'最佳信評分數'為'信用評等'的債券信評分數;
+    設定'最佳信評資訊'為'信用評等'的債券信評資訊;
+    設定'最佳違約等級'為'信用評等'的債券違約等級;
+否則
+    設定'最佳信評分數'為'信用評等'的發行保證信評分數;
+    設定'最佳信評資訊'為'信用評等'的發行保證信評資訊;
+    設定'最佳違約等級'為'信用評等'的發行保證違約等級;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>405</name>
+  <uuid>66839b78-e8d9-4814-bddb-377f6eaba7a0</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"405" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+則
+    設定'檢核項目'的是否通過為'其他資訊'的Rule405是否通過;
+    在'檢核項目'的詳細資訊中增加'其他資訊'的Rule405的詳細資訊;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

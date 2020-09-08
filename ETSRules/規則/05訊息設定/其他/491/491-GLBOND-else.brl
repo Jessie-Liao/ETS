@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>491-GLBOND-else</name>
+  <uuid>620c419c-41f8-49f0-b6f1-8b9638774f08</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"491" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'本次決策資訊'的商品別是"GLBOND"
+    並且下列的所有條件都不成立：
+            - '債券資訊'的編碼類別是{ "ABS" , "CDO" }中的一個
+            - '債券資訊'的編碼類別是{"RMBS" , "CMBS" }中的一個
+            並且'債券資訊'的是否為三房MBS是不成立,
+則
+    在'檢核項目'的詳細資訊中增加"本次" + '買進或賣出' + "決策金額(A)" +公式：將( '債券資訊'的本次決策金額)轉成字串;
+    在'檢核項目'的詳細資訊中增加"匯率 = " +公式：將( '其他資訊'的對台幣匯率)轉成字串;
+    在'檢核項目'的詳細資訊中增加"科主管核准限額(B) =	400,000,000" ;
+    在'檢核項目'的詳細資訊中增加"部門主管核准限額(C) = 800,000,000" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

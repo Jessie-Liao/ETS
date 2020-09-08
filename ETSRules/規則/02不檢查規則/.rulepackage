@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>02不檢查規則</name>
+  <uuid>c3268e00-c8e1-4cd6-acb7-0f4b94eb3d24</uuid>
+</ilog.rules.studio.model.base:RulePackage>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>411-1</name>
+  <uuid>d5038026-b140-4d56-95cc-1d99495e155f</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"411" ;
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'本次決策資訊'的商品名稱是"2867"
+則
+    設定'檢核項目'的是否通過為不成立;
+    在'檢核項目'的簡述中增加"國內本公司庫藏股" ;
+    在'檢核項目'的明細中增加"[股28]此決策股票為庫藏股：" + '本次決策資訊'的商品名稱+ "，無法由電子下單交易" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

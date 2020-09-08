@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>多擇一</name>
+  <uuid>5b0ebe39-aba8-40e0-ac85-dd2138ab5a9b</uuid>
+  <variables name="myVar01" type="java.lang.String" initialValue="" verbalization="買進或賣出"/>
+  <variables name="myVar02" type="java.lang.String" initialValue="" verbalization="本公司核定國外投資額度或保險業主權益名稱_高"/>
+  <variables name="myVar03" type="double" initialValue="" verbalization="本公司核定國外投資額度或保險業主權益金額_高"/>
+  <variables name="myVar04" type="double" initialValue="" verbalization="本公司核定國外投資額度或保險業主權益限額比例_高"/>
+  <variables name="myVar05" type="double" initialValue="" verbalization="最佳信評分數"/>
+  <variables name="myVar06" type="java.lang.String" initialValue="" verbalization="最佳信評資訊"/>
+  <variables name="myVar07" type="double" initialValue="" verbalization="最佳違約等級"/>
+  <variables name="myVar08" type="java.lang.String" initialValue="" verbalization="本公司核定國外投資額度或保險業主權益名稱_低"/>
+  <variables name="myVar09" type="double" initialValue="" verbalization="本公司核定國外投資額度或保險業主權益金額_低"/>
+  <variables name="myVar10" type="double" initialValue="" verbalization="本公司核定國外投資額度或保險業主權益限額比例_低"/>
+  <variables name="myVar11" type="double" initialValue="" verbalization="調整後發行保證違約等級"/>
+</ilog.rules.studio.model.base:VariableSet>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="D:/新增資料夾/仁維實習/三商美邦/ODM/20200723/ETSRules/資源" key="DialogSettingLastExternalArchive"/>
+	<list key="RulesetArchiveExportSettingWizardPage.FileNamesStore">
+		<item value="D:\新增資料夾\仁維實習\三商美邦\ODM\20200723\ETSRules\輸出\ETSRules.zip.dsar"/>
+		<item value="D:\新增資料夾\仁維實習\三商美邦\ODM\20200723\ETSRules\輸出\ETSRules.dsar"/>
+	</list>
+	<list key="SDsRulesetArchiveExportOptionWizardPage.OperationStoref1bd22b2-0e46-4af3-acea-015858fb944e">
+		<item value="ETSRules"/>
+	</list>
+	<section name="IlrRDTSearchDialog">
+		<item value="RuleType" key="IlrRDTSearchDialog.SearchType"/>
+		<item value="false" key="IlrRDTSearchDialog.CaseSensitive"/>
+		<item value="Body" key="IlrRDTSearchDialog.LimitTo"/>
+		<item value="0" key="IlrRDTSearchDialog.ScopeIndex"/>
+	</section>
+	<section name="DynamicXOMPathBuilderPropertyPage">
+		<item value="0" key="DynamicXOMPathBuilderPropertyPage.PageIndex"/>
+	</section>
+	<section name="XOMPathBuilderPropertyPage">
+		<item value="0" key="XOMPathBuilderPropertyPage.PageIndex"/>
+	</section>
+	<section name="BOMPathBuilderPropertyPage">
+		<item value="0" key="BOMPathBuilderPropertyPage.PageIndex"/>
+	</section>
+	<section name="IlrXOMSearchDialog">
+	</section>
+</section>

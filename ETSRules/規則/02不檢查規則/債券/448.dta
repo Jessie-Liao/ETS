@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>448</name>
+  <uuid>f163d652-468b-4f9e-9d6f-62ff337325bc</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Properties>
+      <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+    </Properties>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"448" ;]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的買賣別是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的商品別是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C4">
+          <ExpressionDefinition>
+            <Text><![CDATA['其他資訊'的風險國別是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA[('債券資訊'的債券主類別是"3"並且'債券資訊'的債券子類別不是"3"並且'債券資訊'的投資政策產業別不是"01")是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否需要檢核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 物件>不是<一個 物件>]]></Text>
+            <Param><![CDATA["B"]]></Param>
+          </Expression>
+          <Partition DefId="C4">
+            <Condition>
+              <Expression>
+                <Param/>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA[不成立]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA["買賣別不是買進，故本規則不檢查"]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["B"]]></Param>
+          </Expression>
+          <Partition DefId="C2">
+            <Condition>
+              <Expression>
+                <Text><![CDATA[<一個 物件>不是<一個 物件>]]></Text>
+                <Param><![CDATA["GLBOND"]]></Param>
+              </Expression>
+              <Partition DefId="C4">
+                <Condition>
+                  <Expression/>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["本商品別是"+'本次決策資訊'的商品名稱+"，不為國外債券，故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["GLBOND"]]></Param>
+              </Expression>
+              <Partition DefId="C4">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["TW"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["風險國別是台灣，故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 物件>不是<一個 物件>]]></Text>
+                    <Param><![CDATA["TW"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["本商品不為公司債，故本規則不檢查"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否需要檢核]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[133]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[詳細資訊]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[233]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[買賣別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[121]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[商品別]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[161]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[公司債排除結構型商品且產業別不為銀行]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[222]]></Data>
+      <Data Name="Definitions(C4)#HeaderText"><![CDATA[風險國別]]></Data>
+      <Data Name="Definitions(C4)#Width"><![CDATA[118]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

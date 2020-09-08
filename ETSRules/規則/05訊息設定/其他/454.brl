@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>454</name>
+  <uuid>48e87d35-bd54-4444-af2c-cb9b88bbd7ff</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'期權資訊'為一個期權資訊從( from ) '決策基本資料'的期權資訊;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"454" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+則
+    在'檢核項目'的詳細資訊中增加"本次決策金額(A) = " +公式：將( '期權資訊'的本次的期權金額)轉成字串;
+    在'檢核項目'的詳細資訊中增加"部門主管核准限額： 1,600,000,000" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

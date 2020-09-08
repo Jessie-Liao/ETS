@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>458</name>
+  <uuid>b5ae3e3f-fb12-41dd-b549-bf42e0ad13be</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"458" ;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'庫存+今日已下單_成本'為一個股票庫存+今日已下單(成本)從( from ) '股票資訊'的股票庫存+今日已下單(成本) ;]]>&#13;<![CDATA[
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['庫存+今日已下單_成本'的單一投組國外股票投資"成本"總額(庫存+買進決策) + '股票本次下單資訊'的海外股本次下單金額 大於  <一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的簡述為<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+            <Param><![CDATA['股票資訊' 的投組最新委託資本額]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA["國外股  A + (B * C * D) <= E"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA['股票資訊' 的投組最新委託資本額]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA["國外股  A + (B * C * D) > E"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[264]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[簡述]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[268]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[庫存+今日已下單+本次下單金額]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[392]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

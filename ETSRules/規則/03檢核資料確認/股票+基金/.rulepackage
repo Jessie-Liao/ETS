@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>股票+基金</name>
+  <uuid>c7e10400-9877-4a77-9e06-79f0e6002c9b</uuid>
+</ilog.rules.studio.model.base:RulePackage>

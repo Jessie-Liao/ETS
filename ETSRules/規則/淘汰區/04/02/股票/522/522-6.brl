@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>522-6</name>
+  <uuid>a7818aea-95b3-4598-b6a9-cf107546c198</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"522" ;
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊
+            其中：這個股票資訊的海外股票編碼類別是"REITS" ;
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'股票庫存'為一個股票庫存在( in ) '股票資訊'的股票庫存;
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且( '股票庫存'的型態是( "GlStkStore" ,編碼類別是"REITS" )的總額+ '股票本次下單資訊'的海外股本次下單金額)大於( '其他資訊'的核定國外投資額度* 0.015 )
+則
+    設定'檢核項目'的是否通過為不成立;
+    在'檢核項目'的簡述中增加"國內外高風險性資產-投資用不動產(包含Reits)單一機構限額  A + B > C * D" ;
+    在'檢核項目'的明細中增加"單一投資用不動產現值&今日已下決策(A) = " +公式：將( '股票庫存'的型態是( "GlStkStore" ,編碼類別是"REITS" )的總額)轉成字串;
+    在'檢核項目'的明細中增加"本次決策下單金額(B) = " +公式：將( '股票本次下單資訊'的海外股本次下單金額)轉成字串;
+    在'檢核項目'的明細中增加"經核定保險業資金(C) = " +公式：將( '其他資訊'的國外保險業資金)轉成字串;
+    在'檢核項目'的明細中增加"上限比率(D) = 1.5% " ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

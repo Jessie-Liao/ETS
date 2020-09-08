@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>基金</name>
+  <uuid>2f151c23-0aca-4be6-a8cf-3fb2f178cd58</uuid>
+  <orderedMembers>384</orderedMembers>
+  <orderedMembers>393</orderedMembers>
+  <orderedMembers>440</orderedMembers>
+  <orderedMembers>442</orderedMembers>
+  <orderedMembers>444</orderedMembers>
+  <orderedMembers>463</orderedMembers>
+  <orderedMembers>464</orderedMembers>
+  <orderedMembers>465</orderedMembers>
+  <orderedMembers>466</orderedMembers>
+  <orderedMembers>495</orderedMembers>
+  <orderedMembers>496</orderedMembers>
+  <orderedMembers>503</orderedMembers>
+  <orderedMembers>504</orderedMembers>
+  <orderedMembers>505</orderedMembers>
+  <orderedMembers>506</orderedMembers>
+  <orderedMembers>507</orderedMembers>
+  <orderedMembers>508</orderedMembers>
+  <orderedMembers>509</orderedMembers>
+  <orderedMembers>511</orderedMembers>
+  <orderedMembers>512</orderedMembers>
+  <orderedMembers>513</orderedMembers>
+  <orderedMembers>520</orderedMembers>
+  <orderedMembers>521</orderedMembers>
+</ilog.rules.studio.model.base:RulePackage>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>39601-1</name>
+  <uuid>909e0725-81fd-49cb-825c-a2371cb208d6</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;
+    指定'股票庫存'為一個股票庫存在( in ) '股票資訊'的股票庫存;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"39601" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'股票資訊'的股票編碼類別是"CB"
+則
+    在'檢核項目'的詳細資訊中增加"．該檔普通股現有庫存&今日已下決策(股數)(A) = " +公式：將( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"STK" )的總額)轉成字串;
+    在'檢核項目'的詳細資訊中增加"．該檔特別股現有庫存&今日已下決策(股數)(B) = " +公式：將( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"PREF" )的總額)轉成字串;
+    在'檢核項目'的詳細資訊中增加"．該檔私募普通股現有庫存&今日已下決策(股數)(C) = " +公式：將( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"PRIVATESTK" )的總額)轉成字串;
+    在'檢核項目'的詳細資訊中增加"．該檔私募特別股現有庫存&今日已下決策(股數)(D) = " +公式：將( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"PRIVATEPREF" )的總額)轉成字串;
+    在'檢核項目'的詳細資訊中增加" + 該檔可轉債現有庫存&今日已下決策決策金額(E) = " +公式：將( '股票庫存'的型態是( "StkStore" ,編碼類別是"CB,PREF" )的總額)轉成字串;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

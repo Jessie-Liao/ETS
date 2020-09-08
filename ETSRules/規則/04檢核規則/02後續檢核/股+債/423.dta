@@ -1,0 +1,3003 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>423</name>
+  <uuid>d999cec0-3e92-45ed-8bdc-adba5b2e2003</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Properties>
+      <Property Name="edit.Check.Expression" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="edit.Check.Gap" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="edit.Check.Overlap" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="edit.Check.Symmetry" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="tmpCheck.edit.Check.Expression" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="tmpCheck.edit.Check.Gap" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="tmpCheck.edit.Check.Overlap" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="tmpCheck.edit.Check.Symmetry" Type="xs:boolean"><![CDATA[false]]></Property>
+    </Properties>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'信用評等'為一個信用評等從( from ) '決策基本資料'的信用評等;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'債券投資總額'為一個債券投資總額從( from ) '債券資訊'的債券投資總額;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"423" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['其他資訊' 的國外保險業資金 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的商品別 是<一些 物件> 中的一個]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的產業別 是<一個 物件>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的是否為系統重要性銀行 是 <一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C6">
+          <ExpressionDefinition>
+            <Text><![CDATA[公式：計算( ('債券資訊'的本次決策金額+ '債券投資總額'的國內債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國外債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國內未交割IPO債券產業別總值，(型態為"CB,FB" ) + '債券投資總額'的國外未交割IPO債券產業別總值，(型態為"CB,FB,NB" ) )除以'其他資訊' 的國外保險業資金 )的商大於等於<一個 數字> 小於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C5">
+          <ExpressionDefinition>
+            <Text><![CDATA[公式：計算( ( '股票本次下單資訊'的國內股本次下單金額 + '債券投資總額'的國內債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國外債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國內未交割IPO債券產業別總值，(型態為"CB,FB" ) + '債券投資總額'的國外未交割IPO債券產業別總值，(型態為"CB,FB,NB" ) )除以'其他資訊' 的國外保險業資金 )的商大於等於<一個 數字> 小於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C7">
+          <ExpressionDefinition>
+            <Text><![CDATA[公式：計算( ( '股票本次下單資訊'的海外股本次下單金額  + '債券投資總額'的國內債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國外債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國內未交割IPO債券產業別總值，(型態為"CB,FB" ) + '債券投資總額'的國外未交割IPO債券產業別總值，(型態為"CB,FB,NB" ) )除以'其他資訊' 的國外保險業資金 )的商大於等於<一個 數字> 小於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A3">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否需要檢核 為 <一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A5">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的90% 預警為<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A4">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的90% 預警指示為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C2">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[0]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A3">
+              <Expression/>
+            </Action>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A5">
+              <Expression>
+                <Param><![CDATA["因國外保險業資金小於等於0，故本規則不通過。"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression/>
+            </Action>
+            <Action DefId="A4">
+              <Expression/>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+            <Param><![CDATA[0]]></Param>
+          </Expression>
+          <Partition DefId="C0">
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "BOND","GLBOND" }]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.9*0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.9*0.12]]></Param>
+                            <Param><![CDATA[0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.335 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.335*0.9]]></Param>
+                            <Param><![CDATA[0.335]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.335]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.05 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.05*0.9]]></Param>
+                            <Param><![CDATA[0.05]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.05]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.15*0.9]]></Param>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C6">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.15*0.9]]></Param>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Otherwise/>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["此商品不為公司債、金融債、可轉債、企業放款或特別股!故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "STK" }]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.9*0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.9*0.12]]></Param>
+                            <Param><![CDATA[0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.335 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.335*0.9]]></Param>
+                            <Param><![CDATA[0.335]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.335]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.05 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.05*0.9]]></Param>
+                            <Param><![CDATA[0.05]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.05]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.15*0.9]]></Param>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.15*0.9]]></Param>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Otherwise/>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["此商品不為公司債、金融債、可轉債、企業放款或特別股!故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "GLSTK" }]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.9*0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.9*0.12]]></Param>
+                            <Param><![CDATA[0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.12]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression/>
+                          <Partition DefId="C7">
+                            <Condition>
+                              <Expression>
+                                <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                                <Param><![CDATA[0.335 * 0.9]]></Param>
+                              </Expression>
+                              <ActionSet>
+                                <Action DefId="A3">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A0">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A5">
+                                  <Expression/>
+                                </Action>
+                                <Action DefId="A2">
+                                  <Expression>
+                                    <Param><![CDATA["未達90%預警標準 "]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A4">
+                                  <Expression>
+                                    <Param><![CDATA[不成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A1">
+                                  <Expression/>
+                                </Action>
+                              </ActionSet>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                        <Condition>
+                          <Expression/>
+                          <Partition DefId="C7">
+                            <Condition>
+                              <Expression>
+                                <Param><![CDATA[0.335*0.9]]></Param>
+                                <Param><![CDATA[0.335]]></Param>
+                              </Expression>
+                              <ActionSet>
+                                <Action DefId="A3">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A0">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A5">
+                                  <Expression/>
+                                </Action>
+                                <Action DefId="A2">
+                                  <Expression>
+                                    <Param><![CDATA["已達90%預警標準"]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A4">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A1">
+                                  <Expression/>
+                                </Action>
+                              </ActionSet>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                        <Condition>
+                          <Expression/>
+                          <Partition DefId="C7">
+                            <Condition>
+                              <Expression>
+                                <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                                <Param><![CDATA[0.335]]></Param>
+                              </Expression>
+                              <ActionSet>
+                                <Action DefId="A3">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A0">
+                                  <Expression>
+                                    <Param><![CDATA[不成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A5">
+                                  <Expression/>
+                                </Action>
+                                <Action DefId="A2">
+                                  <Expression/>
+                                </Action>
+                                <Action DefId="A4">
+                                  <Expression/>
+                                </Action>
+                                <Action DefId="A1">
+                                  <Expression/>
+                                </Action>
+                              </ActionSet>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.05 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.05*0.9]]></Param>
+                            <Param><![CDATA[0.05]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.05]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.1*0.9]]></Param>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.1]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.15*0.9]]></Param>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15 * 0.9]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["未達90%預警標準 "]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[0.15*0.9]]></Param>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA["已達90%預警標準"]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[0.15]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A3">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A5">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A4">
+                              <Expression/>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression/>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Otherwise/>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["此商品不為公司債、金融債、可轉債、企業放款或特別股!故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否通過為]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[87]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[詳細資訊]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[87]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[90% 預警]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[87]]></Data>
+      <Data Name="Definitions(A3)#HeaderText"><![CDATA[是否需檢核]]></Data>
+      <Data Name="Definitions(A3)#Width"><![CDATA[87]]></Data>
+      <Data Name="Definitions(A4)#HeaderText"><![CDATA[90% 預警指示]]></Data>
+      <Data Name="Definitions(A4)#Width"><![CDATA[88]]></Data>
+      <Data Name="Definitions(A5)#HeaderText"><![CDATA[詳細資訊]]></Data>
+      <Data Name="Definitions(A5)#Width"><![CDATA[108]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[商品別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[88]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[產業別]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[89]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[分母(國外保險業資金)]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[89]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[是否為系統重要性銀行]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[88]]></Data>
+      <Data Name="Definitions(C5)#HeaderText"><![CDATA[投資同一產業之公司債、可轉債、金融債券+企業放款+固定收益特別股投資額度/核定國外投資額度_STK(非系統重要性銀行)]]></Data>
+      <Data Name="Definitions(C5)#Width"><![CDATA[87]]></Data>
+      <Data Name="Definitions(C5)[0]#HeaderText"><![CDATA[大於等於]]></Data>
+      <Data Name="Definitions(C5)[1]#HeaderText"><![CDATA[小於]]></Data>
+      <Data Name="Definitions(C6)#HeaderText"><![CDATA[投資同一產業之公司債、可轉債、金融債券+企業放款+固定收益特別股投資額度/核定國外投資額度_BOND(非系統重要性銀行)]]></Data>
+      <Data Name="Definitions(C6)#Width"><![CDATA[86]]></Data>
+      <Data Name="Definitions(C6)[0]#HeaderText"><![CDATA[大於等於]]></Data>
+      <Data Name="Definitions(C6)[1]#HeaderText"><![CDATA[小於]]></Data>
+      <Data Name="Definitions(C7)#HeaderText"><![CDATA[投資同一產業之公司債、可轉債、金融債券+企業放款+固定收益特別股投資額度/核定國外投資額度_STK(非系統重要性銀行)]]></Data>
+      <Data Name="Definitions(C7)#Width"><![CDATA[84]]></Data>
+      <Data Name="Definitions(C7)[0]#HeaderText"><![CDATA[大於等於]]></Data>
+      <Data Name="Definitions(C7)[1]#HeaderText"><![CDATA[小於]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>外匯</name>
+  <uuid>49dbbd07-ab5e-4119-90d1-822dedde88db</uuid>
+</ilog.rules.studio.model.base:RulePackage>

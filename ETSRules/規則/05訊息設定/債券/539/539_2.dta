@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>539_2</name>
+  <uuid>c5270b0f-b4ab-40e6-b520-6b6a90b487a9</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'債券投資總額'為一個債券投資總額從( from ) '債券資訊'的債券投資總額;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊; ]]>&#13;<![CDATA[
+	指定 '信用評等' 為 一個信用評等 從( from ) '決策基本資料' 的信用評等 ;  ]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"539" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['信用評等'的債券信評分數大於<一個 數字>小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加"限制比例(D)："+<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加"(A+B)/C  = " +公式：將(公式：計算( ( '債券資訊'的本次決策金額+ '債券投資總額'的單一發行或保證者國外債券投資總額( 同一違約等級) ，( 型態為 "FB2") )除以'其他資訊'的核定國外投資額度)的商* 100 )轉成字串+ "%"]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+            <Param><![CDATA['BBB+']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["無限制比例"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>大於等於<一個 數字>小於<一個 數字>]]></Text>
+            <Param><![CDATA['BBB+']]></Param>
+            <Param><![CDATA['BBB']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["6%"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>大於等於<一個 數字>小於<一個 數字>]]></Text>
+            <Param><![CDATA['BBB']]></Param>
+            <Param><![CDATA['BBB-']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["3%"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>大於等於<一個 數字>小於<一個 數字>]]></Text>
+            <Param><![CDATA['BBB-']]></Param>
+            <Param><![CDATA['BB+']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["2%"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 數字>大於等於<一個 數字>]]></Text>
+            <Param><![CDATA['BB+']]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["1%"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression/>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[限制比例]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[348]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[投資比例]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[310]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[信用評等]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[267]]></Data>
+      <Data Name="Definitions(C0)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C0)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

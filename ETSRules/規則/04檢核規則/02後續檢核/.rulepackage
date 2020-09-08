@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>02後續檢核</name>
+  <uuid>99f75e1f-004a-4b72-ab1f-c5de4e9dcfa1</uuid>
+</ilog.rules.studio.model.base:RulePackage>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>477</name>
+  <uuid>23bdd4e8-040c-486c-9b67-2c64e2289818</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;
+    指定'債券投資總額'為一個債券投資總額從( from ) '債券資訊'的債券投資總額;
+    指定'抵押債務證券評等投資總額'為一個評等投資總額在( in ) '債券投資總額'的所有發行評等投資總額
+            其中：這個評等投資總額 的債券類別 是"CDO" ;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"477" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且下列的所有條件中任何一個條件成立：
+            - '債券資訊'的本次決策金額小於0
+            - '抵押債務證券評等投資總額'的全部評等債券總額 小於0
+            - '其他資訊'的國外保險業資金小於等於0 ,
+則
+    設定'檢核項目'的是否通過為不成立;
+    設定'檢核項目'的是否需要檢核為不成立;
+    在'檢核項目'的詳細資訊中增加"因本規則資料不齊全，故本規則不通過" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

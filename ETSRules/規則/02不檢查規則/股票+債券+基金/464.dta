@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>464</name>
+  <uuid>1e7af3ef-b683-4fad-bad6-a6f34354813b</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Properties>
+      <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+    </Properties>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'基金資訊'為一個基金資訊從( from ) '決策基本資料'的基金資訊;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'信用評等'為一個信用評等從( from ) '決策基本資料'的信用評等;]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"464" ;]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的買賣別是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的商品別是<一些 字串>  中的一個]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C4">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票資訊'的股票編碼類別是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票資訊'的海外股票編碼類別是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C8">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票資訊'的特別股類型是<一些 字串>   中的一個]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C9">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券資訊'的債券主類別是<一些 字串>  中的一個]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['信用評等'的發行保證違約等級小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C5">
+          <ExpressionDefinition>
+            <Text><![CDATA['基金資訊'的編碼類別是<一些 字串>  中的一個]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否需要檢核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Text><![CDATA[<一個 物件>不是<一個 物件>]]></Text>
+            <Param><![CDATA["B"]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["買賣別不是買進，故本規則不檢查"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["B"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression>
+                <Text><![CDATA[<一個 物件>不是<一些 物件>中的一個]]></Text>
+                <Param><![CDATA[{ "GLSTK", "STK", "BOND", "GLBOND", "FOF" }]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA[不成立]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA["本商品別是"+'本次決策資訊'的商品名稱+"，不為國內股票、國外股票、國內債券、國外債券或基金，故本規則不檢查"]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "STK" }]]></Param>
+              </Expression>
+              <Partition DefId="C4">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 物件>不是<一些 物件>中的一個]]></Text>
+                    <Param><![CDATA[{ "STK" , "PREF" , "TDR" , "REITS" , "ETF" , "CB" }]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <ActionSet>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["本商品不是普通股、特別股、可轉換公司債、臺灣存託憑證、指數股票型基金或不動產投資信託，故本規則不檢查"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["PREF"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C8">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[{ "B1" }]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA["本商品是固定受益特別股，故本規則不檢查"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["CB"]]></Param>
+                  </Expression>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C2">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[7]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA["本商品發行保證違約等級為："+ '信用評等' 的發行保證違約等級 +"，小於等於7，故本規則不檢查"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "GLSTK" }]]></Param>
+              </Expression>
+              <Partition DefId="C4">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 物件>不是<一些 物件>中的一個]]></Text>
+                        <Param><![CDATA[{ "STK" , "PREF" , "DR" , "REITS" , "ETF" , "CB" }]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["本商品不是普通股、特別股、可轉換公司債、存託憑證、指數股票型基金或不動產投資信託，故本規則不檢查"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA["PREF"]]></Param>
+                      </Expression>
+                      <Partition DefId="C8">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[{ "B1" }]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA["本商品是固定受益特別股，故本規則不檢查"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA["CB"]]></Param>
+                      </Expression>
+                      <Partition DefId="C2">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                            <Param><![CDATA[7]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA["本商品發行保證違約等級為："+ '信用評等' 的發行保證違約等級 +"，小於等於7，故本規則不檢查"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "GLBOND", "BOND" }]]></Param>
+              </Expression>
+              <Partition DefId="C9">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[{ "1", "6" }]]></Param>
+                  </Expression>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C5">
+                        <Condition>
+                          <Expression>
+                            <Param/>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[不成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA["本商品債券主類別是公債(Government)、證券化商品(Securization Security)，故本規則不檢查"]]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 物件>不是<一些 物件>中的一個]]></Text>
+                    <Param><![CDATA[{ "1" , "6" }]]></Param>
+                  </Expression>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>小於<一個 數字>]]></Text>
+                        <Param><![CDATA[7]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[不成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["本商品發行保證違約等級為："+ '信用評等' 的發行保證違約等級 +"，小於等於7，故本規則不檢查"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[{ "FOF" }]]></Param>
+              </Expression>
+              <Partition DefId="C5">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 物件>不是<一些 物件>中的一個]]></Text>
+                    <Param><![CDATA[{ "A2", "A14" }]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[不成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["本基金商品不是股票型或不動產證券化型，故本規則不檢查"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[詳細資訊]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[129]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[是否需要檢核]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[85]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[買賣別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[91]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[商品別]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[92]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[發行保證違約等級]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[85]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[海外股票編碼類別]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[90]]></Data>
+      <Data Name="Definitions(C4)#HeaderText"><![CDATA[股票編碼類別]]></Data>
+      <Data Name="Definitions(C4)#Width"><![CDATA[93]]></Data>
+      <Data Name="Definitions(C5)#HeaderText"><![CDATA[編碼類別]]></Data>
+      <Data Name="Definitions(C5)#Width"><![CDATA[88]]></Data>
+      <Data Name="Definitions(C8)#HeaderText"><![CDATA[特別股類型]]></Data>
+      <Data Name="Definitions(C8)#Width"><![CDATA[89]]></Data>
+      <Data Name="Definitions(C9)#HeaderText"><![CDATA[債券主類別]]></Data>
+      <Data Name="Definitions(C9)#Width"><![CDATA[89]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

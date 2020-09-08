@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>507</name>
+  <uuid>b91fa3ab-4cb7-4068-8381-86b33e41d9de</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'基金資訊'為一個基金資訊從( from ) '決策基本資料'的基金資訊;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"507" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'基金資訊'的本次的國內外受益憑證金額(台幣)小於0
+則
+    設定'檢核項目'的是否通過為不成立;
+    設定'檢核項目'的是否需要檢核為不成立;
+    在'檢核項目'的詳細資訊中增加"因本規則資料不齊全，故本規則不通過" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

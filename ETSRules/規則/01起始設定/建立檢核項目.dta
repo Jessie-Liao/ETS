@@ -1,0 +1,1691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>建立檢核項目</name>
+  <uuid>daedaa3f-e65a-4143-81f0-9a68dc4c50dc</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Properties>
+      <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="Check.Overlap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="edit.Check.Expression" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="edit.Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="edit.Check.Overlap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="edit.Check.Symmetry" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="tmpCheck.edit.Check.Expression" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="tmpCheck.edit.Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="tmpCheck.edit.Check.Overlap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="tmpCheck.edit.Check.Symmetry" Type="xs:boolean"><![CDATA[false]]></Property>
+    </Properties>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['決策基本資料'不為空是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核結果'中新增一個檢核項目，其RuleID 及簡述為( <一個 字串> , <一個 字串> )]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["288"]]></Param>
+                <Param><![CDATA["關係人檢查"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["384"]]></Param>
+                <Param><![CDATA["期信基金佔可運用資金的10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["391"]]></Param>
+                <Param><![CDATA["公開發行之公司股票(普通股、特別股)及債券(公司債、可轉債)的投資總額不得超過該保險業資金35%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["392"]]></Param>
+                <Param><![CDATA["TDR投資總額，可運用資金控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["393"]]></Param>
+                <Param><![CDATA["證券化商品及其他經主管機關核准保險業購買之有價證券"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["394"]]></Param>
+                <Param><![CDATA["單一檔股票(含特別股、TDR)、可轉債之投資總額，可運用資金控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["395"]]></Param>
+                <Param><![CDATA["單一檔公司股票(普通股、特別股)及債券(公司債、可轉債)的投資總額不得超過該保險業資金10% "]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["39601"]]></Param>
+                <Param><![CDATA["單一檔股票(普通股及特別股含未上市上櫃)、可轉債之投資總額需小於該檔公司實收資本額10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["39602"]]></Param>
+                <Param><![CDATA["投資於每一台灣存託憑證之總額不得超過該外國公司台灣存託憑證總額5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["397"]]></Param>
+                <Param><![CDATA["每一檔公司之股票+公司債+以股票及公司債為質押的放款總額< 該檔公司實收資本額*10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["398"]]></Param>
+                <Param><![CDATA["該單一股票屬於金控、銀行、保險之投資總額，實收資本額控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["400"]]></Param>
+                <Param><![CDATA["判斷是否反向交易,國內股票（當日不得反向交易，所有基金） "]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["401"]]></Param>
+                <Param><![CDATA["單一股票累計投資限額，可運用資金控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["402"]]></Param>
+                <Param><![CDATA["公開發行公司所發行未上市櫃股票(含興櫃)累計投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["402"]]></Param>
+                <Param><![CDATA["公開發行公司所發行私募股票累計投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["404"]]></Param>
+                <Param><![CDATA["可轉換公司債,特別股(單日全部累計)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["405"]]></Param>
+                <Param><![CDATA["判斷是否要檢查研究報告"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["406"]]></Param>
+                <Param><![CDATA["期貨避險交易"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["407"]]></Param>
+                <Param><![CDATA["期貨選擇權避險交易"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["408"]]></Param>
+                <Param><![CDATA["以避險為目的之期貨(單日公司全部經理人)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["411"]]></Param>
+                <Param><![CDATA["此決策股票為庫藏股"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["413"]]></Param>
+                <Param><![CDATA["投資經理人授權部位上限控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["414"]]></Param>
+                <Param><![CDATA["國內外上市、上櫃、興櫃股票大額交易規範及市場流動性監控"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["415"]]></Param>
+                <Param><![CDATA["投資組合管理（stock pool）"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["41601"]]></Param>
+                <Param><![CDATA["上市上櫃證券化商品(ABS+MBS+CDO+IO+Reits)累計投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["41602"]]></Param>
+                <Param><![CDATA["政府公債(GB)累計投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["41603"]]></Param>
+                <Param><![CDATA["上市上櫃金融債+公司債+特別股(FB+CB+Perf)累計投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["41901"]]></Param>
+                <Param><![CDATA["上市上櫃證券化商品(ABS+MBS+CDO+IO+Reits)單日單筆投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["41902"]]></Param>
+                <Param><![CDATA["政府公債(GB)單日單筆投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["41903"]]></Param>
+                <Param><![CDATA["上市上櫃金融債+公司債(FB+CB)單日單筆投資,需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["422"]]></Param>
+                <Param><![CDATA["金融債、可轉讓定期存單、銀行承兌匯票、金融機構保證商業本票（含本國銀行發行且以外幣計價之金融債）"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["423"]]></Param>
+                <Param><![CDATA["國內外投資同一產業之公司債、可轉債、金融債券、企業放款和特別股投資額度限制"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["424"]]></Param>
+                <Param><![CDATA["投資於單一公司或保證機構之公司債、金融債、地方政府債、可轉債、結構型商品、企業放款和固定收益特別股，但不包含一般住宅抵押放款，依發行者或保證機構之違約等級投資額度<保險業資金比率限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["42501"]]></Param>
+                <Param><![CDATA["投資受益證券或資產基礎證券應具備之信用評等等級；投資同次發行受益證券或資產基礎證券，不得超過該次受益證券或資產基礎證券巳發行總額百分之五十。投資同次發行受益證券(REITS)不得超過該次受益證券巳發行總額百分之十。"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["42502"]]></Param>
+                <Param><![CDATA["投資受益證券或資產基礎證券應具備之信用評等等級；ABS,MBS,REITS投資總額 < 國內投資檢核保險業資金*10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["42601"]]></Param>
+                <Param><![CDATA["同一公司發行公司債+以外幣計價之公司債 之台幣帳載總額 < 國內投資檢核保險業資金*5% "]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["42602"]]></Param>
+                <Param><![CDATA["同一公司發行國外公司債+以台外幣計價之公司債 之台幣帳載總額 < 保險業資金*5% "]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["428"]]></Param>
+                <Param><![CDATA["上市上櫃之可轉換公司債(CB)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["429"]]></Param>
+                <Param><![CDATA["股票、TDR、ETF 每日交易限額(單日全部累計)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["432"]]></Param>
+                <Param><![CDATA["海外上市櫃股票/特別股/ETF/非本國企業發行存託憑證(單日全部累計)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["434"]]></Param>
+                <Param><![CDATA["海外上市櫃股票/特別股/ETF/非本國企業發行存託憑證/可轉換公司債(單日單筆限額)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["437"]]></Param>
+                <Param><![CDATA["海外股票是否可投資(上市櫃股票/特別股/ETF/Reits/非本國企業發行之存託憑證/可轉換公司債）控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["440"]]></Param>
+                <Param><![CDATA["國外表彰基金投資總額<保險業經核定國外投資額度40%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["442"]]></Param>
+                <Param><![CDATA["每一國外基金(證券投資基金、指數型基金、指數股票型基金ETF、不動產投資信託基金、基礎建設基金)投資總額<保險業資金5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["444"]]></Param>
+                <Param><![CDATA["每一國外基金(證券投資基金、指數型基金、指數股票型基金ETF、不動產投資信託基金、基礎建設基金)投資總額<該基金已發行總額10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["446"]]></Param>
+                <Param><![CDATA["每一外國公司發行或保證有價證券總額 < 保險業資金5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["447"]]></Param>
+                <Param><![CDATA["每一外國公司發行或保證有價證券總額 < 發行保證公司業主權益10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["448"]]></Param>
+                <Param><![CDATA["每一外國公司發行或保證之公司債、非本國企業發行可轉換公司債及附認股權公司債(BBB、BBB-、BB+)之台幣帳載金額 < 保險業業主權益10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["449"]]></Param>
+                <Param><![CDATA["海外投資於BB+(含)以下等級之公司債、可轉換公司債、附認股權公司投資總額<保險業經核定國外投資額度2%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["450"]]></Param>
+                <Param><![CDATA["海外投資總額占可運用資金扣除外幣準備金35%控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["451"]]></Param>
+                <Param><![CDATA["海外投資於BBB(含)以下等級之公司債、非本國企業可轉債、附認股權公司債< 核定國外投資額度7.5%或 保險業主權益30% 兩者限額孰高者為限"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["452"]]></Param>
+                <Param><![CDATA["海外投資於BBB+(含)以下等級之可轉換公司債及附認股權公司債、基金及未達BBB-之抵押債務債券占保險業資金控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["453"]]></Param>
+                <Param><![CDATA["投資外國證券集中交易市場或店頭市場交易之股票、首次公開募集之股票、非本國企業發行之存託憑證、可轉換公司債及附認股權公司債之總額<保險業經核定國外投資額度40%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["454"]]></Param>
+                <Param><![CDATA["權益相關衍生性金融商品（避險目的）單筆限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["455"]]></Param>
+                <Param><![CDATA["債券信用評等未達A-/twA-或未達AA-/twAA-需主管授權"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["456"]]></Param>
+                <Param><![CDATA["國內外上市、上櫃、興櫃股票大額交易規範及市場流動性監控"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["457"]]></Param>
+                <Param><![CDATA["每一檔股票累計投資金額之限額控管，單一個股累計投資限額:>1% 可運用資金:需事先經投資委員會決議，投資系統管理科放行。"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["458"]]></Param>
+                <Param><![CDATA["投資經理人授權部位上限控管"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["460"]]></Param>
+                <Param><![CDATA["大陸地區同一公司所發行股票、公司債、金融債投資總額<保險業經核定國外投資額度1%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["461"]]></Param>
+                <Param><![CDATA["大陸地區同一公司所發行股票、公司債、金融債投資總額<發行公司業主權益10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["462"]]></Param>
+                <Param><![CDATA["大陸地區政府公債投資總額 < 保險業經核定國外投資額度5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["463"]]></Param>
+                <Param><![CDATA["大陸地區掛牌上市證券投資基金及指數股票型基金之每一基金投資總額<保險業經核定國外投資額度1%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["464"]]></Param>
+                <Param><![CDATA["高風險性資產投資總額占保險業資金控管(普通股/ETF/TDR/私募股票/Reits/債券違約等級6以上(不含6)/投資用不動產)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["465"]]></Param>
+                <Param><![CDATA["大陸地區公債、國庫券、公司債、金融債、股票、ETF及證券投資基金之投資總額<保險業經核定國外投資額度10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["466"]]></Param>
+                <Param><![CDATA["投資同一國家資產占保險業資金限額(除台灣外)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["46701"]]></Param>
+                <Param><![CDATA["國內+國外衍生性金融商品（結構型商品）投資總額 < 保險業資金10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["46702"]]></Param>
+                <Param><![CDATA["辦理衍生性金融商品（結構型商品）之外國金融機構評等須達BBB+級"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["469"]]></Param>
+                <Param><![CDATA["同一公司之公司債帳載總額 < 國內投資檢核保險業資金*5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["470"]]></Param>
+                <Param><![CDATA["投資同一發行人之公司債總額(包含同一發行人之公司債及外幣計公司債)小於該發行公司實收資本額10%  "]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["471"]]></Param>
+                <Param><![CDATA["不得投資BB等級及其以下公司債、非本國企業發行之可轉換公司債及附認股權公司債、金融債、可轉讓定期存單、浮動利率中期債券"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["472"]]></Param>
+                <Param><![CDATA["RBC < 200%不得投資BBB(含)等級以下公司債、非本國企業發行之可轉換公司債及附認股權公司債、金融債、可轉讓定期存單、浮動利率中期債券；RBC < 250%不得投資BBB-(含)以下公司債、非本國企業發行之可轉換公司債及附認股權公司債、金融債、可轉讓定期存單、浮動利率中期債券"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["473"]]></Param>
+                <Param><![CDATA["RBC<250% 或 200%<=RBC<250%且本公司最近1年信用評等未達AA-等級不得投資事項"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["474"]]></Param>
+                <Param><![CDATA["投資國外資產證券化商品須達A-等級"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["475"]]></Param>
+                <Param><![CDATA["國外資產證券化商品(ABS、MBS(排除三房)、CDO)投資總額占保險業經核定國外投資額度20%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["476"]]></Param>
+                <Param><![CDATA["每一國外資產證券化商品(ABS、MBS(排除三房)、CDO)占保險業資金1%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["478"]]></Param>
+                <Param><![CDATA["國外證券化商品三房MBS投資總額<保險業經核定國外投資額度50%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["479"]]></Param>
+                <Param><![CDATA["每一機構國外證券化商品三房MBS投資金額占保險業經核定國外投資額度25%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["480"]]></Param>
+                <Param><![CDATA["投資國外中央政府機構債券信用評等不得投資未達AA-等級"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["481"]]></Param>
+                <Param><![CDATA["每一國外中央政府機構AA-所發行債券總額占保險業資金5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["482"]]></Param>
+                <Param><![CDATA["投資國際性組織債券信用評等不得投資未達A-等級"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["483"]]></Param>
+                <Param><![CDATA["每一國際性組織A-所發行債券總額占保險業資金5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["484"]]></Param>
+                <Param><![CDATA["RBC<200% 大陸地區不得投資事項"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["485"]]></Param>
+                <Param><![CDATA["投資於大陸地區公司債、金融債且非屬次順位者，債券發行評等須為BBB+級或相當等級以上，無債券發行評等者其發行或保證公司之信評為 A- 級或相當等級以上"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["488"]]></Param>
+                <Param><![CDATA["投資於FNMA、FHLMC之債券金額小於保險業資金2%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["489"]]></Param>
+                <Param><![CDATA["投資於單一公司或保證機構之公司債、金融債、地方政府債、可轉債、結構型商品、企業放款和固定收益特別股，但不包含一般住宅抵押放款，依次順位債券之違約等級投資額度<保險業資金比率限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["490"]]></Param>
+                <Param><![CDATA["國外債券-政府公債/金融債/商業本票(短票)/公司債/可轉債/國外政府機構債(Agency)/國際性組織債券(Supra)/上市上櫃證券化商品(單日全部累計)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["491"]]></Param>
+                <Param><![CDATA["國外債券-上市上櫃證券化商品/公債/金融債/公司債/可轉債/商業本票(短票)/國外政府機構債(Agency)/國際性組織債券(Supra)(當日單筆)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["493"]]></Param>
+                <Param><![CDATA["外匯(當日單筆)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["494"]]></Param>
+                <Param><![CDATA["外匯(當日單筆)"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["495"]]></Param>
+                <Param><![CDATA["受益憑證總額小於保險業資金10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["496"]]></Param>
+                <Param><![CDATA["每一基金總額小於該基金發行總額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["503"]]></Param>
+                <Param><![CDATA["國內貨幣市場基金單筆限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["504"]]></Param>
+                <Param><![CDATA["國內貨幣市場基金累積限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["505"]]></Param>
+                <Param><![CDATA["國內非股票型基金累積限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["506"]]></Param>
+                <Param><![CDATA["國內股票型基金累積限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["507"]]></Param>
+                <Param><![CDATA["國外貨幣型基金單筆限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["508"]]></Param>
+                <Param><![CDATA["國外貨幣型基金累積限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["509"]]></Param>
+                <Param><![CDATA["國外非股票型基金投資累積限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["511"]]></Param>
+                <Param><![CDATA["國內外貨幣市場基金單筆關係人額度覆核"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["512"]]></Param>
+                <Param><![CDATA["國內外非貨幣市場基金單筆關係人額度覆核"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["513"]]></Param>
+                <Param><![CDATA["大陸地區掛牌上市證券投資基金及指數股票型基金之每一基金投資總額<該基金已發行總額10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["514"]]></Param>
+                <Param><![CDATA["投資國外及大陸地區次順位債券投資總額不得超過核定國外投資額度之20%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["515"]]></Param>
+                <Param><![CDATA["每一地方政府發行或保證之債券之投資總額需小於核定國外投資額度*5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["516"]]></Param>
+                <Param><![CDATA["外國地方政府發行或保證之債券信用評等限制"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["517"]]></Param>
+                <Param><![CDATA["國外結構型債券累計限額限制，需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["518"]]></Param>
+                <Param><![CDATA["國外結構型債券單筆限額限制，需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["520"]]></Param>
+                <Param><![CDATA["高風險性資產-普通股投資總額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["521"]]></Param>
+                <Param><![CDATA["高風險性資產-投資用不動產(包含Reits)投資總額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["522"]]></Param>
+                <Param><![CDATA["高風險性資產-投資用不動產(包含Reits)單一限額:"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["523"]]></Param>
+                <Param><![CDATA["投資於大陸地區次順位公司債及次順位金融債，債券發行評等須為BBB+級或相當等級以上，無債券發行評等者其發行或保證公司之信評為 A+ 級或相當等級以上"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["524"]]></Param>
+                <Param><![CDATA["大陸地區之次順位公司債金融債投資總額 < 保險業經核定國外投資額度1%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["525"]]></Param>
+                <Param><![CDATA["債券發行評等為BB+(含)以下等級之次順位金融債台幣投資總額 < 核定國外投資額度2%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["526"]]></Param>
+                <Param><![CDATA["債券發行評等為BBB(含)以下等級之次順位金融債台幣投資總額 < 核定國外投資額度7.5%或 保險業主權益30% 兩者限額孰高者為限"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["527"]]></Param>
+                <Param><![CDATA["每一外國銀行發行或保證有價證券總額 < 保險業資金5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["528"]]></Param>
+                <Param><![CDATA["每一外國銀行發行或保證有價證券總額 < 該發行/保證銀行業主權益10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["529"]]></Param>
+                <Param><![CDATA["每一外國銀行發行或保證之次順位金融債(BBB、BBB-、BB+)之總額 < 保險業業主權益10%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["530"]]></Param>
+                <Param><![CDATA["對沖基金投資總額限制，需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["531"]]></Param>
+                <Param><![CDATA["利率交換投資總額限制，需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["532"]]></Param>
+                <Param><![CDATA["利率交換單筆投資限制，需主管核准"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["533"]]></Param>
+                <Param><![CDATA["對沖基金、私募股權基金投資總額超過保險業可用運資金0.05%，應經董事長/副董事長決議，由投資系統管理科主管放行"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["534"]]></Param>
+                <Param><![CDATA["防制洗錢-禁止交易國家"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["535"]]></Param>
+                <Param><![CDATA["本國企業發行國際板或海外外幣計價股權或債權憑證信用評等需達twBB級或相當等級以上"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["536"]]></Param>
+                <Param><![CDATA["外國地方政府發行或保證債券+外國地方政府所屬機構發行或保證之債券投資總額 < 核定國外投資額度*5%"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["537"]]></Param>
+                <Param><![CDATA["投資於單一公司或保證機構之公司債、金融債、地方政府債、可轉債、結構型商品、企業放款和固定收益特別股，但不包含一般住宅抵押放款，依發行者或保證機構之違約等級投資額度<本公司業主權益比率限額"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["538"]]></Param>
+                <Param><![CDATA["投資國外及大陸地區發行之次順位債券投資總額不得超過核定國外投資額度之各信用評等限額。"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA["539"]]></Param>
+                <Param><![CDATA["投資國外及大陸地區發行之次順位金融債券投資總額不得超過核定國外投資額度之各信用評等限額。"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[新增一個檢核項目]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[786]]></Data>
+      <Data Name="Definitions(A0)[0]#HeaderText"><![CDATA[RuleID]]></Data>
+      <Data Name="Definitions(A0)[1]#HeaderText"><![CDATA[簡述]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA['決策基本資料'不為空]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[765]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

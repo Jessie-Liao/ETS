@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>是否為金融保險業</name>
+  <uuid>3acea631-53f5-43c8-ac4a-df5f1c998ed2</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+  指定'股票資訊'為一個 股票資訊從(from) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+  指定'庫存+今日已下單_成本'為一個 股票庫存+今日已下單(成本)從(from) '股票資訊'的股票庫存+今日已下單(成本) ;]]>&#13;<![CDATA[
+  指定'股票本次下單資訊'為一個 股票本次下單資訊從(from) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+  指定'檢核項目'為一個 檢核項目在(in) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+          其中：這個 檢核項目的RuleID是{ "350" , "398" }中的一個;]]>&#13;<![CDATA[
+  指定'債券資訊'為一個 債券資訊從(from) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+  指定'本次決策資訊'為一個 本次決策資訊從(from) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+  指定'其他資訊'為一個 其他資訊從(from) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的行業別  是"17" 是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的行業名稱  包含<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否需要檢核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的詳細資訊為<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C1">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[不成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA["不屬於金控銀行保險業。 本股票產業代碼：" + '本次決策資訊' 的行業別 + "金融產業代碼：17"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <Partition DefId="C2">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["華票"]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA[不成立]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA["不屬於金控銀行保險業。 本股票產業代碼：" + '本次決策資訊' 的行業別 + "但為證券期貨商，不屬於本規則範圍。"]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["期"]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA[不成立]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA["不屬於金控銀行保險業。 本股票產業代碼：" + '本次決策資訊' 的行業別 + "但為證券期貨商，不屬於本規則範圍。"]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["證"]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA[不成立]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA["不屬於金控銀行保險業。 本股票產業代碼：" + '本次決策資訊' 的行業別 + "但為證券期貨商，不屬於本規則範圍。"]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否需要檢核]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[145]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[193]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[行業別是否為17]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[256]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[行業名稱包含]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[277]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

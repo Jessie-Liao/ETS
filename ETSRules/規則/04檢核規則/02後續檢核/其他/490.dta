@@ -1,0 +1,1665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>490</name>
+  <uuid>09306fc3-0b3c-4615-a0be-3d2f740b1bc2</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'股票今日已下決策'為一個股票今日已下決策資訊從( from ) '股票資訊'的股票今日已下決策資訊;]]>&#13;<![CDATA[
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    指定'債券投資總額'為一個債券投資總額從( from ) '債券資訊'的債券投資總額;]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"490" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的商品別 是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票資訊' 的股票編碼類別 是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券資訊'的編碼類別是 <一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C6">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券資訊' 的是否為三房MBS  是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C5">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的決策股數 + '股票今日已下決策'的今日科層級已下決策金額* '其他資訊' 的對台幣匯率  大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C10">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的決策股數 + '股票今日已下決策'的今日部門層級已下決策金額* '其他資訊' 的對台幣匯率 大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C4">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的決策股數 + '股票今日已下決策'的今日本部層級已下決策金額* '其他資訊' 的對台幣匯率 大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊'的決策股數+'股票今日已下決策'的今日公司全部已下決策金額* '其他資訊' 的對台幣匯率 大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C15">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票本次下單資訊' 的海外股本次下單金額  + '股票今日已下決策'的今日科層級已下決策金額* '其他資訊' 的對台幣匯率  大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C14">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票本次下單資訊' 的海外股本次下單金額  + '股票今日已下決策'的今日部門層級已下決策金額* '其他資訊' 的對台幣匯率 大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C13">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票本次下單資訊' 的海外股本次下單金額 + '股票今日已下決策'的今日本部層級已下決策金額* '其他資訊' 的對台幣匯率 大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C12">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票本次下單資訊' 的海外股本次下單金額 +'股票今日已下決策'的今日公司全部已下決策金額* '其他資訊' 的對台幣匯率 大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C11">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券投資總額'的各部門國外債券投資總額，( 型態為"TL" ) + '債券資訊' 的本次決策金額大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C7">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券投資總額' 的各部門國外債券投資總額，( 型態為"DM" ) + '債券資訊' 的本次決策金額   大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C8">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券投資總額' 的各部門國外債券投資總額，( 型態為"MDM" ) + '債券資訊' 的本次決策金額   大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C9">
+          <ExpressionDefinition>
+            <Text><![CDATA['債券投資總額' 的各部門國外債券投資總額，( 型態為"MLI" ) + '債券資訊' 的本次決策金額   大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否需要覆核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的審核層級為<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA["CASH"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression/>
+              <Partition DefId="C5">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                    <Param><![CDATA[1,000,000,000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['科主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C10">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[1000000000]]></Param>
+                    <Param><![CDATA[2000000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['部門主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C4">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[2000000000]]></Param>
+                    <Param><![CDATA[4000000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['本部主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[4000000000]]></Param>
+                    <Param><![CDATA[6000000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['投資長或副投資長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[6000000000]]></Param>
+                    <Param><![CDATA[7500000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['財務長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[7500000000]]></Param>
+                    <Param><![CDATA[9000000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['總經理']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                    <Param><![CDATA[9,000,000,000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA[成立]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA['董事長或副董事長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["GLSTK"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["CB"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C15">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[1,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['科主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C10">
+                    <Condition>
+                      <Expression>
+                        <Param/>
+                        <Param/>
+                      </Expression>
+                      <Partition DefId="C14">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[1000000000]]></Param>
+                            <Param><![CDATA[2000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['部門主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C4">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C13">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[2000000000]]></Param>
+                            <Param><![CDATA[4000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['本部主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[4000000000]]></Param>
+                            <Param><![CDATA[6000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['投資長或副投資長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[6000000000]]></Param>
+                            <Param><![CDATA[7500000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['財務長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[7500000000]]></Param>
+                            <Param><![CDATA[9000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['總經理']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                            <Param><![CDATA[9,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['董事長或副董事長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["REITS"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C10">
+                        <Condition>
+                          <Expression/>
+                          <Partition DefId="C4">
+                            <Condition>
+                              <Expression/>
+                              <Partition DefId="C14">
+                                <Condition>
+                                  <Expression>
+                                    <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                                    <Param><![CDATA[500,000,000]]></Param>
+                                  </Expression>
+                                  <Partition DefId="C13">
+                                    <Condition>
+                                      <Expression>
+                                        <Param/>
+                                        <Param/>
+                                      </Expression>
+                                      <ActionSet>
+                                        <Action DefId="A0">
+                                          <Expression>
+                                            <Param><![CDATA[成立]]></Param>
+                                          </Expression>
+                                        </Action>
+                                        <Action DefId="A1">
+                                          <Expression>
+                                            <Param><![CDATA[成立]]></Param>
+                                          </Expression>
+                                        </Action>
+                                        <Action DefId="A2">
+                                          <Expression>
+                                            <Param><![CDATA['部門主管']]></Param>
+                                          </Expression>
+                                        </Action>
+                                      </ActionSet>
+                                    </Condition>
+                                  </Partition>
+                                </Condition>
+                              </Partition>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C10">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C4">
+                        <Condition>
+                          <Expression/>
+                          <Partition DefId="C13">
+                            <Condition>
+                              <Expression>
+                                <Param><![CDATA[500,000,000]]></Param>
+                                <Param><![CDATA[700,000,000]]></Param>
+                              </Expression>
+                              <ActionSet>
+                                <Action DefId="A0">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A1">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A2">
+                                  <Expression>
+                                    <Param><![CDATA['本部主管']]></Param>
+                                  </Expression>
+                                </Action>
+                              </ActionSet>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C4">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C3">
+                        <Condition>
+                          <Expression/>
+                          <Partition DefId="C12">
+                            <Condition>
+                              <Expression>
+                                <Param><![CDATA[700,000,000]]></Param>
+                                <Param><![CDATA[1,000,000,000]]></Param>
+                              </Expression>
+                              <ActionSet>
+                                <Action DefId="A0">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A1">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A2">
+                                  <Expression>
+                                    <Param><![CDATA['投資長或副投資長']]></Param>
+                                  </Expression>
+                                </Action>
+                              </ActionSet>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[1000000000]]></Param>
+                            <Param><![CDATA[2000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['財務長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[2000000000]]></Param>
+                            <Param><![CDATA[3000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['總經理']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C3">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C12">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                            <Param><![CDATA[3,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['董事長或副董事長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["GLBOND"]]></Param>
+          </Expression>
+          <Partition DefId="C2">
+            <Condition>
+              <Expression>
+                <Text><![CDATA[<一個 物件>是<一些 物件>中的一個]]></Text>
+                <Param><![CDATA[{ "ABS" , "CDO" }]]></Param>
+              </Expression>
+              <Partition DefId="C6">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C7">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                        <Param><![CDATA[500,000,000]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA['部門主管']]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C8">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[500,000,000]]></Param>
+                        <Param><![CDATA[700,000,000]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA['本部主管']]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C9">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[700,000,000]]></Param>
+                        <Param><![CDATA[1,000,000,000]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA['投資長或副投資長']]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C9">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[1000000000]]></Param>
+                        <Param><![CDATA[2000000000]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA['財務長']]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C9">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[2000000000]]></Param>
+                        <Param><![CDATA[3000000000]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA['總經理']]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C9">
+                    <Condition>
+                      <Expression>
+                        <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                        <Param><![CDATA[3,000,000,000]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA[成立]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A2">
+                          <Expression>
+                            <Param><![CDATA['董事長或副董事長']]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Text><![CDATA[<一個 物件>是<一些 物件>中的一個]]></Text>
+                <Param><![CDATA[{ "RMBS" , "CMBS" }]]></Param>
+              </Expression>
+              <Partition DefId="C6">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[不成立]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[500,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['部門主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C8">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[500,000,000]]></Param>
+                            <Param><![CDATA[700,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['本部主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[700,000,000]]></Param>
+                            <Param><![CDATA[1,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['投資長或副投資長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[1000000000]]></Param>
+                            <Param><![CDATA[2000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['財務長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[2000000000]]></Param>
+                            <Param><![CDATA[3000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['總經理']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                            <Param><![CDATA[3,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['董事長或副董事長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[成立]]></Param>
+                  </Expression>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C11">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[1,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['科主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[1000000000]]></Param>
+                            <Param><![CDATA[2000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['部門主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C8">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[2000000000]]></Param>
+                            <Param><![CDATA[4000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['本部主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[4000000000]]></Param>
+                            <Param><![CDATA[6000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['投資長或副投資長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[6000000000]]></Param>
+                            <Param><![CDATA[7500000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['財務長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[7500000000]]></Param>
+                            <Param><![CDATA[9000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['總經理']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                            <Param><![CDATA[9,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['董事長或副董事長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Otherwise/>
+              </Expression>
+              <Partition DefId="C6">
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C5">
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C11">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                            <Param><![CDATA[1,000,000,000]]></Param>
+                          </Expression>
+                          <Partition DefId="C9">
+                            <Condition>
+                              <Expression>
+                                <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                                <Param/>
+                              </Expression>
+                              <ActionSet>
+                                <Action DefId="A0">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A1">
+                                  <Expression>
+                                    <Param><![CDATA[成立]]></Param>
+                                  </Expression>
+                                </Action>
+                                <Action DefId="A2">
+                                  <Expression>
+                                    <Param><![CDATA['科主管']]></Param>
+                                  </Expression>
+                                </Action>
+                              </ActionSet>
+                            </Condition>
+                          </Partition>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C7">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[1000000000]]></Param>
+                            <Param><![CDATA[2000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['部門主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C8">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[2000000000]]></Param>
+                            <Param><![CDATA[4000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['本部主管']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[4000000000]]></Param>
+                            <Param><![CDATA[6000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['投資長或副投資長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[6000000000]]></Param>
+                            <Param><![CDATA[7500000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['財務長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Param><![CDATA[7500000000]]></Param>
+                            <Param><![CDATA[9000000000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['總經理']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                    <Condition>
+                      <Expression/>
+                      <Partition DefId="C9">
+                        <Condition>
+                          <Expression>
+                            <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                            <Param><![CDATA[9,000,000,000]]></Param>
+                          </Expression>
+                          <ActionSet>
+                            <Action DefId="A0">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A1">
+                              <Expression>
+                                <Param><![CDATA[成立]]></Param>
+                              </Expression>
+                            </Action>
+                            <Action DefId="A2">
+                              <Expression>
+                                <Param><![CDATA['董事長或副董事長']]></Param>
+                              </Expression>
+                            </Action>
+                          </ActionSet>
+                        </Condition>
+                      </Partition>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[41]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[是否需要覆核]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[43]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[審核層級]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[42]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[商品別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[32]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[股票編碼類別]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[63]]></Data>
+      <Data Name="Definitions(C10)#HeaderText"><![CDATA[決策股數+今日部門層級已下決策金額]]></Data>
+      <Data Name="Definitions(C10)#Width"><![CDATA[41]]></Data>
+      <Data Name="Definitions(C10)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C10)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C11)#HeaderText"><![CDATA[決策金額+部門決策(BOND)]]></Data>
+      <Data Name="Definitions(C11)#Width"><![CDATA[31]]></Data>
+      <Data Name="Definitions(C11)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C11)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C12)#HeaderText"><![CDATA[決策股數+今日公司全部已下決策金額]]></Data>
+      <Data Name="Definitions(C12)#Width"><![CDATA[41]]></Data>
+      <Data Name="Definitions(C12)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C12)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C13)#HeaderText"><![CDATA[決策股數+今日本部層級已下決策金額]]></Data>
+      <Data Name="Definitions(C13)#Width"><![CDATA[30]]></Data>
+      <Data Name="Definitions(C13)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C13)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C14)#HeaderText"><![CDATA[決策股數+今日部門層級已下決策金額]]></Data>
+      <Data Name="Definitions(C14)#Width"><![CDATA[38]]></Data>
+      <Data Name="Definitions(C14)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C14)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C15)#HeaderText"><![CDATA[決策股數+今日科層級已下決策金額]]></Data>
+      <Data Name="Definitions(C15)#Width"><![CDATA[31]]></Data>
+      <Data Name="Definitions(C15)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C15)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[債券資訊的編碼類別]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[54]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[決策股數+今日公司全部已下決策金額]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[34]]></Data>
+      <Data Name="Definitions(C3)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C3)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C4)#HeaderText"><![CDATA[決策股數+今日本部層級已下決策金額]]></Data>
+      <Data Name="Definitions(C4)#Width"><![CDATA[36]]></Data>
+      <Data Name="Definitions(C4)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C4)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C5)#HeaderText"><![CDATA[決策股數+今日科層級已下決策金額]]></Data>
+      <Data Name="Definitions(C5)#Width"><![CDATA[32]]></Data>
+      <Data Name="Definitions(C5)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C5)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C6)#HeaderText"><![CDATA[是否為三房MBS]]></Data>
+      <Data Name="Definitions(C6)#Width"><![CDATA[40]]></Data>
+      <Data Name="Definitions(C7)#HeaderText"><![CDATA[決策金額+部門決策(BOND)]]></Data>
+      <Data Name="Definitions(C7)#Width"><![CDATA[42]]></Data>
+      <Data Name="Definitions(C7)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C7)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C8)#HeaderText"><![CDATA[決策金額+部門決策(BOND)]]></Data>
+      <Data Name="Definitions(C8)#Width"><![CDATA[36]]></Data>
+      <Data Name="Definitions(C8)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C8)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C9)#HeaderText"><![CDATA[決策金額+部門決策(BOND)]]></Data>
+      <Data Name="Definitions(C9)#Width"><![CDATA[43]]></Data>
+      <Data Name="Definitions(C9)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C9)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>384</name>
+  <uuid>9e7935db-c6de-468b-bc27-cff3c5b549d5</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'基金資訊'為一個基金資訊從( from ) '決策基本資料'的基金資訊;
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;
+    指定'基金投資總額'為一個基金投資總額從( from ) '基金資訊'的基金投資總額;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"384" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+則
+    在'檢核項目'的詳細資訊中增加"庫存&今日已下單金額(A)： " +公式：將( '基金投資總額'的期信基金投資總額)轉成字串;
+    在'檢核項目'的詳細資訊中增加"本次下單金額(B)：  " +公式：將( '基金資訊'的本次的國內外受益憑證金額(台幣) )轉成字串;
+    在'檢核項目'的詳細資訊中增加"國內投資檢核保險資金(C)： " +公式：將( '其他資訊'的國內保險業資金)轉成字串;
+    在'檢核項目'的詳細資訊中增加"上限比率(D)： 10%" ;
+    在'檢核項目'的詳細資訊中增加"(A+B)/C = " +公式：將(公式：計算( ( '基金投資總額'的期信基金投資總額+ '基金資訊'的本次的國內外受益憑證金額(台幣) )除以'其他資訊'的國內保險業資金)的商* 100 )轉成字串+ "%" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

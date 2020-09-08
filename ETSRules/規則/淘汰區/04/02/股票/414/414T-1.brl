@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>414T-1</name>
+  <uuid>287200a9-0490-4091-b5d3-c1f43d0d8da8</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"414" ;
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'股票本次下單資訊'的國內股今日下單金額+ '股票本次下單資訊'的國內股本次下單金額小於1000000000
+則
+
+    在'檢核項目'的簡述中增加"1:單日單一檔買進金額控管  A + B < C" ;
+    在'檢核項目'的明細中增加"今日累計已下單金額(A) = " +公式：將( '股票本次下單資訊'的國內股今日下單金額)轉成字串;
+    在'檢核項目'的明細中增加"本次下單金額(B) = " +公式：將( '股票本次下單資訊'的國內股本次下單金額 )轉成字串;
+    在'檢核項目'的明細中增加"可投資金額(C) = 1,000,000,000" ; ]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

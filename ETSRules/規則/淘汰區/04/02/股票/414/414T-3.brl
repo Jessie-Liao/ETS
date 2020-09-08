@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>414T-3</name>
+  <uuid>b42e6508-1729-4d3f-bd47-ca7024c2c32c</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"414" ;
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;
+    
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;
+    指定'股票庫存'為一個股票庫存在( in ) '股票資訊'的股票庫存;
+如果
+    '檢核項目'的是否需要檢核是成立
+    並且'本次決策資訊'的決策數量+ '股票庫存'的公司單一標的庫存(國內外股票)小於'股票資訊'的國內股十日均量* 20
+則
+    在'檢核項目'的簡述中增加"3:累計單一檔買進股數佔該股10日均量20倍控管  H + I  < J * K" ;
+    在'檢核項目'的明細中增加"累積已下單股數(H) = " +公式：將('股票庫存'的公司單一標的庫存(國內外股票))轉成字串;
+    在'檢核項目'的明細中增加"本次下單量(I) = " +公式：將( '本次決策資訊'的決策數量)轉成字串;
+    在'檢核項目'的明細中增加"十日均量(J) = " +公式：將( '股票資訊'的國內股十日均量)轉成字串;
+    在'檢核項目'的明細中增加"上限比率(K) = 20" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

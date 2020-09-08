@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>414</name>
+  <uuid>34969729-7d0c-47a6-bbc0-f01189264f73</uuid>
+  <orderedMembers>414T-1</orderedMembers>
+  <orderedMembers>414F-1</orderedMembers>
+  <orderedMembers>414T-2</orderedMembers>
+  <orderedMembers>414F-2</orderedMembers>
+  <orderedMembers>414T-3</orderedMembers>
+  <orderedMembers>414F-3</orderedMembers>
+</ilog.rules.studio.model.base:RulePackage>

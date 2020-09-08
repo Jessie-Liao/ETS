@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><ImpactedElements>
+    <Package id="04檢核規則.01前置檢核">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+    <Package id="04檢核規則.02後續檢核">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+    <Package id="01起始設定">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+    <Package id="05訊息設定">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+    <Package id="02不檢查規則">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+    <Package id="03檢核資料確認">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+    <Package id="06最終設定">
+        <UserFlow id="cd20da86-3b99-4b66-b6ca-3c6143616361"/>
+    </Package>
+</ImpactedElements>

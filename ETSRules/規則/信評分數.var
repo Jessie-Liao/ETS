@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>信評分數</name>
+  <uuid>1bcdee1a-5e41-4b0e-ab5d-dd8369de0a6f</uuid>
+  <variables name="Order01" type="int" initialValue="12" verbalization="BB"/>
+  <variables name="Order02" type="int" initialValue="11" verbalization="BB+"/>
+  <variables name="Order03" type="int" initialValue="10" verbalization="BBB-"/>
+  <variables name="Order04" type="int" initialValue="9" verbalization="BBB"/>
+  <variables name="Order05" type="int" initialValue="8" verbalization="BBB+"/>
+  <variables name="Order06" type="int" initialValue="7" verbalization="A-"/>
+  <variables name="Order07" type="int" initialValue="4" verbalization="twAA-"/>
+  <variables name="Order08" type="int" initialValue="5" verbalization="A+"/>
+  <variables name="Order09" type="int" initialValue="4" verbalization="AA-"/>
+  <variables name="Order10" type="int" initialValue="7" verbalization="twA-"/>
+  <variables name="Order11" type="int" initialValue="3" verbalization="AA"/>
+  <variables name="Order12" type="int" initialValue="12" verbalization="twBB"/>
+  <variables name="Order13" type="int" initialValue="10" verbalization="twBBB-"/>
+</ilog.rules.studio.model.base:VariableSet>

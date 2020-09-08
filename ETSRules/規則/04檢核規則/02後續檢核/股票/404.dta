@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>404</name>
+  <uuid>eb96ef4b-349d-476d-82db-a373fd0aabba</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"404" ;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'股票今日已下決策資訊'為一個股票今日已下決策資訊從( from ) '股票資訊'的股票今日已下決策資訊;]]>&#13;<![CDATA[
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+   '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C4">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的買賣別 是<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票今日已下決策資訊'的今日科層級已下決策金額+ '股票本次下單資訊'的國內股本次下單金額大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票今日已下決策資訊'的今日本部層級已下決策金額+ '股票本次下單資訊'的國內股本次下單金額大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票今日已下決策資訊'的今日本部層級已下決策金額+ '股票本次下單資訊'的國內股本次下單金額大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA['股票今日已下決策資訊'的今日公司全部已下決策金額+ '股票本次下單資訊'的國內股本次下單金額大於<一個 數字> 小於等於<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否通過為成立]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的是否需要覆核為成立]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A3">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的簡述中增加<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'的審核層級為<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C4">
+        <Condition>
+          <Expression>
+            <Param><![CDATA["B"]]></Param>
+          </Expression>
+          <Partition DefId="C0">
+            <Condition>
+              <Expression>
+                <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                <Param><![CDATA[100000000]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression/>
+                </Action>
+                <Action DefId="A2">
+                  <Expression/>
+                </Action>
+                <Action DefId="A3">
+                  <Expression>
+                    <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B1 <= C"]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA['科主管']]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[100000000]]></Param>
+                    <Param><![CDATA[300000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計) A + B2 > C & A + B2 <= D"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['部門主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[300000000]]></Param>
+                    <Param><![CDATA[400000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B3 > D & A + B3 <= E"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['本部主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[400000000]]></Param>
+                    <Param><![CDATA[500000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B4 > E & A + B4 <= F"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['投資長或副投資長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[500000000]]></Param>
+                    <Param><![CDATA[650000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B4 > F & A + B4 <= G"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['財務長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[650000000]]></Param>
+                    <Param><![CDATA[750000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計) A + B4 > G & A + B4 <= H"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['總經理']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                    <Param><![CDATA[750000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計) A + B4 > H"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['董事長或副董事長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["S"]]></Param>
+          </Expression>
+          <Partition DefId="C0">
+            <Condition>
+              <Expression>
+                <Text><![CDATA[<一個 數字>小於等於<一個 數字>]]></Text>
+                <Param><![CDATA[100000000]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression/>
+                </Action>
+                <Action DefId="A2">
+                  <Expression/>
+                </Action>
+                <Action DefId="A3">
+                  <Expression>
+                    <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B1 <= C"]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression>
+                    <Param><![CDATA['科主管']]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[100000000]]></Param>
+                    <Param><![CDATA[300000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計) A + B2 > C & A + B2 <= D"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['部門主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[300000000]]></Param>
+                    <Param><![CDATA[400000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B3 > D & A + B3 <= E"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['本部主管']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[400000000]]></Param>
+                    <Param><![CDATA[500000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B4 > E & A + B4 <= F"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['投資長或副投資長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[500000000]]></Param>
+                    <Param><![CDATA[650000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計)  A + B4 > F & A + B4 <= G"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['財務長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[650000000]]></Param>
+                    <Param><![CDATA[750000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計) A + B4 > G & A + B4 <= H"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['總經理']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression/>
+              <Partition DefId="C3">
+                <Condition>
+                  <Expression>
+                    <Text><![CDATA[<一個 數字>大於<一個 數字>]]></Text>
+                    <Param><![CDATA[750000000]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA["國內上市上櫃之可轉換公司債(單日累計) A + B4 > H"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA['董事長或副董事長']]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[142]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[審核層級]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[108]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[是否需要覆核]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[109]]></Data>
+      <Data Name="Definitions(A3)#HeaderText"><![CDATA[簡述]]></Data>
+      <Data Name="Definitions(A3)#Width"><![CDATA[74]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[科主管限額]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[75]]></Data>
+      <Data Name="Definitions(C0)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C0)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[部門主管限額]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[107]]></Data>
+      <Data Name="Definitions(C1)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C1)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[本部主管限額]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[121]]></Data>
+      <Data Name="Definitions(C2)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C2)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[全公司限額]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[119]]></Data>
+      <Data Name="Definitions(C3)[0]#HeaderText"><![CDATA[大於]]></Data>
+      <Data Name="Definitions(C3)[1]#HeaderText"><![CDATA[小於等於]]></Data>
+      <Data Name="Definitions(C4)#HeaderText"><![CDATA[買賣別]]></Data>
+      <Data Name="Definitions(C4)#Width"><![CDATA[69]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

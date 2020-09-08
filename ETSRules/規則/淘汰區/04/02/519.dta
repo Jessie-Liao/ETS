@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>519</name>
+  <uuid>f9bbeb53-3373-4ec9-a54a-52005f812c27</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"519" ;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['其他資訊'的該組別在N日間是否有反向交易是<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否通過為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的是否需要覆核為<一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A3">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的審核層級為<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[設定'檢核項目'  的簡述為<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A4">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的明細中增加"本次決策"]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A6">
+          <ExpressionDefinition>
+            <Text><![CDATA[在<一個 檢核項目> 的明細中增加 "組別名稱：" + '本次決策資訊'的組別名稱]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A7">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的明細中增加"標的：" + '本次決策資訊'的商品名稱]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A8">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的明細中增加"於" +公式:取得( '股票資訊'的反向檢查營業日)的字串+<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A0">
+              <Expression/>
+            </Action>
+            <Action DefId="A3">
+              <Expression/>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA["國內股票三日反向交易限制"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A4">
+              <Expression/>
+            </Action>
+            <Action DefId="A6">
+              <Expression/>
+            </Action>
+            <Action DefId="A7">
+              <Expression/>
+            </Action>
+            <Action DefId="A8">
+              <Expression>
+                <Param><![CDATA["後無反向交易"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[不成立]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A0">
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A3">
+              <Expression>
+                <Param><![CDATA['投資長或副投資長']]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A2">
+              <Expression>
+                <Param><![CDATA["國內股票三日反向交易限制"]]></Param>
+              </Expression>
+            </Action>
+            <Action DefId="A4">
+              <Expression/>
+            </Action>
+            <Action DefId="A6">
+              <Expression/>
+            </Action>
+            <Action DefId="A7">
+              <Expression/>
+            </Action>
+            <Action DefId="A8">
+              <Expression>
+                <Param><![CDATA["後含反向交易"]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[是否需要覆核]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[83]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[是否通過]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[138]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[簡述]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[148]]></Data>
+      <Data Name="Definitions(A3)#HeaderText"><![CDATA[審核層級]]></Data>
+      <Data Name="Definitions(A3)#Width"><![CDATA[149]]></Data>
+      <Data Name="Definitions(A4)#HeaderText"><![CDATA[本次決策]]></Data>
+      <Data Name="Definitions(A4)#Width"><![CDATA[65]]></Data>
+      <Data Name="Definitions(A6)#HeaderText"><![CDATA[組別名稱]]></Data>
+      <Data Name="Definitions(A6)#Width"><![CDATA[70]]></Data>
+      <Data Name="Definitions(A7)#HeaderText"><![CDATA[商品名稱]]></Data>
+      <Data Name="Definitions(A7)#Width"><![CDATA[74]]></Data>
+      <Data Name="Definitions(A8)#HeaderText"><![CDATA[反向交易檢查]]></Data>
+      <Data Name="Definitions(A8)#Width"><![CDATA[76]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[在N日間是否有反向交易]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[129]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

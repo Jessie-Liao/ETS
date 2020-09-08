@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>532</name>
+  <uuid>870d89ab-139b-4316-823a-ba025e013f5a</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+    指定'利率交換資訊'為一個利率交換資訊從( from ) '決策基本資料'的利率交換資訊;
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表
+            其中：這個檢核項目的RuleID是"532" ;
+如果
+    '檢核項目'的是否需要檢核是成立
+則
+    在'檢核項目'的詳細資訊中增加"本次決策金額(A) = " +公式：將( '利率交換資訊'的本次的利率交換金額 )轉成字串;
+    在'檢核項目'的詳細資訊中增加"部門主管核准限額(B) = 1,400,000,000" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

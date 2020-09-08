@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>ETSRulesParameters</name>
+  <uuid>4766aa87-509d-4932-99bf-1ef36359b847</uuid>
+  <variables name="inParam" type="com.mli.ets.bom.Decision" initialValue="" verbalization="決策基本資料"/>
+  <variables name="outParam" type="com.mli.ets.bom.CheckDataCollection" initialValue="new com.mli.ets.bom.CheckDataCollection()" verbalization="檢核結果"/>
+</ilog.rules.studio.model.base:VariableSet>

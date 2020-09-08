@@ -1,0 +1,1539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>423-2</name>
+  <uuid>89a5645e-af6d-426e-b1ae-fad4772b8db6</uuid>
+  <locale>zh_TW</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Preconditions>
+      <Text><![CDATA[定義]]>&#13;<![CDATA[
+    指定'本次決策資訊'為一個本次決策資訊從( from ) '決策基本資料'的本次決策資訊;]]>&#13;<![CDATA[
+    指定'債券資訊'為一個債券資訊從( from ) '決策基本資料'的債券資訊;]]>&#13;<![CDATA[
+    指定'股票資訊'為一個股票資訊從( from ) '決策基本資料'的股票資訊;]]>&#13;<![CDATA[
+    指定'股票庫存'為一個股票庫存在( in ) '股票資訊'的股票庫存;]]>&#13;<![CDATA[
+    指定'其他資訊'為一個其他資訊從( from ) '決策基本資料'的其他資訊;]]>&#13;<![CDATA[
+    指定'股票本次下單資訊'為一個股票本次下單資訊從( from ) '股票資訊'的股票本次下單資訊;]]>&#13;<![CDATA[
+    指定'債券投資總額'為一個債券投資總額從( from ) '債券資訊'的債券投資總額;]]>&#13;<![CDATA[
+    指定'檢核項目'為一個檢核項目在( in ) '檢核結果'的檢核項目列表]]>&#13;<![CDATA[
+            其中：這個檢核項目的RuleID是"423" ;]]>&#13;<![CDATA[
+如果]]>&#13;<![CDATA[
+    '檢核項目'的是否需要檢核是成立]]></Text>
+    </Preconditions>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C0">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的商品別 是<一個 物件>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C1">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的是否為系統重要性銀行 是 <一個 布林類型>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA['本次決策資訊' 的產業別 是<一個 物件>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A0">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'  的詳細資訊中增加"本次台幣交割金額(O)"+ 公式：將( <數字> ) 轉成字串]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A4">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加"．價格 = "+<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A5">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目' 的詳細資訊中增加"．股數 = "+<一個 數字>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A6">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目' 的詳細資訊中增加"．匯率 = "+公式：將('其他資訊'的對台幣匯率)轉成字串]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A7">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目' 的詳細資訊中增加"系統重要銀行部位(Q) = "+<一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A8">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加"保單準備金(R) = "+ <一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加"可運用資金(P) = "+公式：將('其他資訊'的國外保險業資金)轉成字串]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A2">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目'的詳細資訊中增加"限制比例 = "+ <一個 字串>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+        <ActionDefinition Id="A3">
+          <ExpressionDefinition>
+            <Text><![CDATA[在'檢核項目' 的詳細資訊中增加"(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O)/P=" +公式：計算( ( <一個 數字> + '債券投資總額'的國內債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國外債券產業別投資總額，(型態為"CB,FB,NB" ) + '債券投資總額'的國內未交割IPO債券產業別總值，(型態為"CB,FB" ) + '債券投資總額'的國外未交割IPO債券產業別總值，(型態為"CB,FB,NB" ) )除以'其他資訊' 的國外保險業資金  )的商*100+"%"]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C0">
+        <Condition>
+          <Expression>
+            <Param><![CDATA["BOND"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A4">
+                  <Expression/>
+                </Action>
+                <Action DefId="A5">
+                  <Expression/>
+                </Action>
+                <Action DefId="A6">
+                  <Expression/>
+                </Action>
+                <Action DefId="A7">
+                  <Expression>
+                    <Param><![CDATA[公式：將('債券資訊'的本次決策金額+'債券投資總額'的國內債券產業別投資總額，(型態為"CB,FB,NB,CD" ) + '債券投資總額'的國內未交割IPO債券產業別總值，(型態為"CB,FB" )) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A8">
+                  <Expression>
+                    <Param><![CDATA[公式：將( '其他資訊' 的保單準備金金額 ) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression/>
+                </Action>
+                <Action DefId="A2">
+                  <Expression>
+                    <Param><![CDATA["12%"]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A3">
+                  <Expression>
+                    <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["33.5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["GLBOND"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A4">
+                  <Expression/>
+                </Action>
+                <Action DefId="A5">
+                  <Expression/>
+                </Action>
+                <Action DefId="A6">
+                  <Expression/>
+                </Action>
+                <Action DefId="A7">
+                  <Expression>
+                    <Param><![CDATA[公式：將('債券資訊'的本次決策金額+'債券投資總額'的國外債券產業別投資總額，(型態為"CB,FB,NB,CD" )+'債券投資總額'的國外未交割IPO債券產業別總值，(型態為"CB,FB,NB" )) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A8">
+                  <Expression>
+                    <Param><![CDATA[公式：將( '其他資訊' 的保單準備金金額 ) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression/>
+                </Action>
+                <Action DefId="A2">
+                  <Expression>
+                    <Param><![CDATA["12%"]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A3">
+                  <Expression>
+                    <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["33.5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['債券資訊'的本次決策金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["STK"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A4">
+                  <Expression>
+                    <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A5">
+                  <Expression>
+                    <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A6">
+                  <Expression/>
+                </Action>
+                <Action DefId="A7">
+                  <Expression>
+                    <Param><![CDATA[公式：將('股票本次下單資訊' 的國內股本次下單金額+'債券投資總額'的國內債券產業別投資總額，(型態為"CB,FB,NB,CD" ) + '債券投資總額'的國內未交割IPO債券產業別總值，(型態為"CB,FB" )) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A8">
+                  <Expression>
+                    <Param><![CDATA[公式：將( '其他資訊' 的保單準備金金額 ) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression/>
+                </Action>
+                <Action DefId="A2">
+                  <Expression>
+                    <Param><![CDATA["12%"]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A3">
+                  <Expression>
+                    <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["33.5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的國內股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["GLSTK"]]></Param>
+          </Expression>
+          <Partition DefId="C1">
+            <Condition>
+              <Expression>
+                <Param><![CDATA[成立]]></Param>
+              </Expression>
+              <ActionSet>
+                <Action DefId="A0">
+                  <Expression>
+                    <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A4">
+                  <Expression>
+                    <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A5">
+                  <Expression>
+                    <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A6">
+                  <Expression/>
+                </Action>
+                <Action DefId="A7">
+                  <Expression>
+                    <Param><![CDATA[公式：將('股票本次下單資訊' 的海外股本次下單金額+'債券投資總額'的國外債券產業別投資總額，(型態為"CB,FB,NB,CD" )+'債券投資總額'的國外未交割IPO債券產業別總值，(型態為"CB,FB,NB" )) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A8">
+                  <Expression>
+                    <Param><![CDATA[公式：將( '其他資訊' 的保單準備金金額 ) 轉成字串]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A1">
+                  <Expression/>
+                </Action>
+                <Action DefId="A2">
+                  <Expression>
+                    <Param><![CDATA["12%"]]></Param>
+                  </Expression>
+                </Action>
+                <Action DefId="A3">
+                  <Expression>
+                    <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                  </Expression>
+                </Action>
+              </ActionSet>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA[不成立]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["1"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["33.5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["2"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["5%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["3"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["4"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["5"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA["10%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["6"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊' 的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["7"]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A4">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策價]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A5">
+                      <Expression>
+                        <Param><![CDATA['本次決策資訊'的決策數量]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A6">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A7">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A8">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression/>
+                    </Action>
+                    <Action DefId="A2">
+                      <Expression>
+                        <Param><![CDATA[" 15%"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A3">
+                      <Expression>
+                        <Param><![CDATA['股票本次下單資訊'的海外股本次下單金額]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="zh_TW">
+    <ResourceSet Locale="zh_TW">
+      <Data Name="Definitions(A0)#HeaderText"><![CDATA[本次交割金額(O)]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[96]]></Data>
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[可運用資金 (P)=]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[86]]></Data>
+      <Data Name="Definitions(A2)#HeaderText"><![CDATA[限制比例]]></Data>
+      <Data Name="Definitions(A2)#Width"><![CDATA[80]]></Data>
+      <Data Name="Definitions(A3)#HeaderText"><![CDATA[(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O)/P=]]></Data>
+      <Data Name="Definitions(A3)#Width"><![CDATA[79]]></Data>
+      <Data Name="Definitions(A4)#HeaderText"><![CDATA[價格]]></Data>
+      <Data Name="Definitions(A4)#Width"><![CDATA[78]]></Data>
+      <Data Name="Definitions(A5)#HeaderText"><![CDATA[股數]]></Data>
+      <Data Name="Definitions(A5)#Width"><![CDATA[77]]></Data>
+      <Data Name="Definitions(A6)#HeaderText"><![CDATA[匯率]]></Data>
+      <Data Name="Definitions(A6)#Width"><![CDATA[79]]></Data>
+      <Data Name="Definitions(A7)#HeaderText"><![CDATA[系統重要銀行部位]]></Data>
+      <Data Name="Definitions(A7)#Width"><![CDATA[74]]></Data>
+      <Data Name="Definitions(A8)#HeaderText"><![CDATA[保單準備金(Q)]]></Data>
+      <Data Name="Definitions(A8)#Width"><![CDATA[76]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[商品別]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[77]]></Data>
+      <Data Name="Definitions(C1)#HeaderText"><![CDATA[是否為系統重要性銀行]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[80]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[產業別]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[96]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>

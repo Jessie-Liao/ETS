@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>396TDR_F</name>
+  <uuid>c05d58a4-bde0-4ceb-b567-9a5dade8d07b</uuid>
+  <locale>zh_TW</locale>
+  <definition><![CDATA[定義
+   指定'檢核項目'為一個 檢核項目在(in) '檢核結果'的檢核項目列表
+           其中：這個 檢核項目的RuleID是"396" ;
+   指定'股票資訊'為一個 股票資訊從(from) '決策基本資料'的股票資訊
+           其中：這個 股票資訊的股票編碼類別是"TDR" ;
+   指定'股票庫存'為一個 股票庫存在(in) '股票資訊'的股票庫存;
+   指定'本次決策資訊'為一個 本次決策資訊從(from) '決策基本資料'的本次決策資訊;
+如果
+    '檢核項目'的是否需要檢核是成立
+   並且公式：計算( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"TDR" )的總額+ '本次決策資訊'的決策數量除以'股票資訊'的單一國內股票發行股數)的商大於等於0.05
+則
+   設定'檢核項目'的是否通過為不成立;
+   在'檢核項目'的簡述中增加"國內單一TDR投資限額  (A + B) / C >= E " ;
+   在'檢核項目'的明細中增加"該檔股票現有總庫存&今日已下決策(單位數)(A) =" +公式：將( '股票庫存'的型態是( "StkStoreShare" ,編碼類別是"TDR" )的總額)轉成字串;
+   在'檢核項目'的明細中增加" + 本次買進單位數(B) = " +公式：將( '本次決策資訊'的決策數量)轉成字串;
+   在'檢核項目'的明細中增加"總發行股數(C) = " +公式：將( '股票資訊'的單一國內股票發行股數)轉成字串;
+   在'檢核項目'的明細中增加"上限比率(E) = 5%" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>
