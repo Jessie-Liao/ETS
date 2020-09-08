@@ -62,6 +62,14 @@ public class BondStoreOrder implements Serializable {
 	private double issuerDomesticPortfolioDeposit = -999999; // 發行人國內組合型存款投資總額
 	private double issuerForeignPortfolioDeposit = -999999; // 發行人國外組合型存款投資總額
 	private double abroadFNMA_FHLMCTotalAmt = -999999; // 國外FNMA、FHLMC債券投資總額
+	private String test="null";
+	public String getTest() {
+		return test;
+	}
+
+	public void setTest(String test) {
+		this.test = test;
+	}
 
 	private List<StoreB> ratingAmt = new ArrayList<StoreB>(); // 所有發行評等投資總額
 	private List<StoreB> singleRatingAmt = new ArrayList<StoreB>(); // 單一發行評等投資總額 

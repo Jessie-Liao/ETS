@@ -159,6 +159,8 @@ com.mli.ets.bom.BondStoreOrder.sum_domIPOBondAmt_Undeliv(java.lang.String)#phras
 com.mli.ets.bom.BondStoreOrder.sum_domSingleBondAmt_deliv(java.lang.String)#phrase.navigation = {this}的國內單一待交割債券金額，(型態為 {0})
 com.mli.ets.bom.BondStoreOrder.sum_industryBondStore_Domestic(java.lang.String)#phrase.navigation = {this}的國內債券產業別投資總額，(型態為 {0})
 com.mli.ets.bom.BondStoreOrder.sum_industryBondStore_Foreign(java.lang.String)#phrase.navigation = {this}的國外債券產業別投資總額，(型態為 {0})
+com.mli.ets.bom.BondStoreOrder.test#phrase.action = 設定{this}的測試為{測試}
+com.mli.ets.bom.BondStoreOrder.test#phrase.navigation = {this} 的{測試}
 
 # com.mli.ets.bom.CheckData
 com.mli.ets.bom.CheckData#concept.label = 檢核項目
