@@ -70,7 +70,7 @@
             <Action DefId="A0">
               <Expression>
                 <Param><![CDATA["391"]]></Param>
-                <Param><![CDATA["公開發行之公司股票(普通股、特別股)及債券(公司債、可轉債)的投資總額不得超過該保險業資金35%"]]></Param>
+                <Param><![CDATA["公開發行之公司股票(普通股、特別股)及債券(公司債、可轉債)的投資總額不得超過該保險業資金30%"]]></Param>
               </Expression>
             </Action>
           </ActionSet>
@@ -1680,11 +1680,11 @@
   <Resources DefaultLocale="zh_TW">
     <ResourceSet Locale="zh_TW">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[新增一個檢核項目]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[786]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[680]]></Data>
       <Data Name="Definitions(A0)[0]#HeaderText"><![CDATA[RuleID]]></Data>
       <Data Name="Definitions(A0)[1]#HeaderText"><![CDATA[簡述]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA['決策基本資料'不為空]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[765]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[332]]></Data>
     </ResourceSet>
   </Resources>
 </DT></definition>

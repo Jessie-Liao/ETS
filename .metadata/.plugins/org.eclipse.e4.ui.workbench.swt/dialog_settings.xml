@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="ShowViewDialog">
-		<item value="292" key="DIALOG_WIDTH"/>
-		<item value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI" key="DIALOG_FONT_NAME"/>
-		<item value="org.eclipse.ui.views.PropertySheet" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
-		<item value="473" key="DIALOG_HEIGHT"/>
+		<item value="331" key="DIALOG_WIDTH"/>
+		<item value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI" key="DIALOG_FONT_NAME"/>
+		<item value="ilog.rules.studio.brmExplorer" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="504" key="DIALOG_HEIGHT"/>
 		<item value="823" key="DIALOG_X_ORIGIN"/>
 		<item value="209" key="DIALOG_Y_ORIGIN"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="一般"/>
-			<item value="外掛程式開發"/>
-			<item value="伺服器"/>
-			<item value="除錯"/>
-			<item value="報告設計"/>
-			<item value="資料管理"/>
-			<item value="團隊"/>
-			<item value="說明"/>
 			<item value="Ant"/>
 			<item value="API 工具"/>
 			<item value="CVS"/>

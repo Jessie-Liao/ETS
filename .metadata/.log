@@ -2700,3 +2700,205 @@ java.net.ConnectException: Connection refused: connect
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.lang.Thread.run(Thread.java:818)
+!SESSION 2020-09-08 16:58:59.421 -----------------------------------------------
+eclipse.buildId=
+java.fullversion=8.0.5.40 - pwa6480sr5fp40-20190807_01(SR5 FP40)
+JRE 1.8.0 Windows 8 amd64-64-Bit Compressed References 20190802_424001 (JIT enabled, AOT enabled)
+OpenJ9   - 106f6ce
+OMR      - fe07f6f
+IBM      - af2a365
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-09-08 16:59:44.888
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.help.base 4 0 2020-09-08 17:01:28.413
+!MESSAGE Internal error while reading TOC contents from remote server
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:90)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:380)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:236)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:218)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:183)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+	at java.net.Socket.connect(Socket.java:666)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:192)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:494)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:589)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:256)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:360)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:378)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1238)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1174)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1068)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1002)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1582)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1510)
+	at org.eclipse.help.internal.base.util.ProxyUtil.getStream(ProxyUtil.java:124)
+	at org.eclipse.help.internal.base.remote.RemoteTocProvider.getTocContributions(RemoteTocProvider.java:87)
+	at org.eclipse.help.internal.toc.TocManager.getAndCacheTocContributions(TocManager.java:211)
+	at org.eclipse.help.internal.toc.TocManager.getTocContributionsForToc(TocManager.java:199)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:307)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:68)
+	at org.eclipse.help.HelpSystem.getTocs(HelpSystem.java:71)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.searchKeywordTopic(IlrOpenDocumentationAction.java:105)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.access$0(IlrOpenDocumentationAction.java:104)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:98)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:818)
+
+!ENTRY org.eclipse.help.base 4 0 2020-09-08 17:01:30.633
+!MESSAGE I/O error while trying to contact the remote help server
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:90)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:380)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:236)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:218)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:183)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+	at java.net.Socket.connect(Socket.java:666)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:192)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:494)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:589)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:256)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:360)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:378)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1238)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1174)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1068)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1002)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1582)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1510)
+	at org.eclipse.help.internal.base.util.ProxyUtil.getStream(ProxyUtil.java:124)
+	at org.eclipse.help.internal.base.remote.RemoteExtensionProvider.getContentExtensions(RemoteExtensionProvider.java:51)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.loadExtensions(ContentExtensionManager.java:100)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.getExtensions(ContentExtensionManager.java:67)
+	at org.eclipse.help.internal.dynamic.ExtensionResolver.resolveExtension(ExtensionResolver.java:61)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handleExtension(ExtensionHandler.java:63)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handle(ExtensionHandler.java:44)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:44)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:57)
+	at org.eclipse.help.internal.toc.TocAssembler.process(TocAssembler.java:251)
+	at org.eclipse.help.internal.toc.TocAssembler.assemble(TocAssembler.java:79)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:310)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:68)
+	at org.eclipse.help.HelpSystem.getTocs(HelpSystem.java:71)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.searchKeywordTopic(IlrOpenDocumentationAction.java:105)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.access$0(IlrOpenDocumentationAction.java:104)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:98)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:818)
+
+!ENTRY com.ibm.rules.studio.decisionservice.ui 4 0 2020-09-08 17:02:34.557
+!MESSAGE 部署目標伺服器狀態：[• 目標 'res': '聯絡 "http://localhost:9080/res/auth?ping=pong" 時，發生 I/O 錯誤。 聯絡 "http://localhost:9080/res/auth?ping=pong" 時，發生 I/O 錯誤。 Connect to localhost:9080 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect Connection refused: connect'。]
+!SESSION 2020-09-08 17:16:00.411 -----------------------------------------------
+eclipse.buildId=
+java.fullversion=8.0.5.40 - pwa6480sr5fp40-20190807_01(SR5 FP40)
+JRE 1.8.0 Windows 8 amd64-64-Bit Compressed References 20190802_424001 (JIT enabled, AOT enabled)
+OpenJ9   - 106f6ce
+OMR      - fe07f6f
+IBM      - af2a365
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.help.base 4 0 2020-09-08 17:16:35.134
+!MESSAGE Internal error while reading TOC contents from remote server
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:90)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:380)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:236)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:218)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:183)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+	at java.net.Socket.connect(Socket.java:666)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:192)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:494)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:589)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:256)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:360)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:378)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1238)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1174)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1068)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1002)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1582)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1510)
+	at org.eclipse.help.internal.base.util.ProxyUtil.getStream(ProxyUtil.java:124)
+	at org.eclipse.help.internal.base.remote.RemoteTocProvider.getTocContributions(RemoteTocProvider.java:87)
+	at org.eclipse.help.internal.toc.TocManager.getAndCacheTocContributions(TocManager.java:211)
+	at org.eclipse.help.internal.toc.TocManager.getTocContributionsForToc(TocManager.java:199)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:307)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:68)
+	at org.eclipse.help.HelpSystem.getTocs(HelpSystem.java:71)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.searchKeywordTopic(IlrOpenDocumentationAction.java:105)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.access$0(IlrOpenDocumentationAction.java:104)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:98)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:818)
+
+!ENTRY org.eclipse.help.base 4 0 2020-09-08 17:16:37.296
+!MESSAGE I/O error while trying to contact the remote help server
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:90)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:380)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:236)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:218)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:183)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+	at java.net.Socket.connect(Socket.java:666)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:192)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:494)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:589)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:256)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:360)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:378)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1238)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1174)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1068)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1002)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1582)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1510)
+	at org.eclipse.help.internal.base.util.ProxyUtil.getStream(ProxyUtil.java:124)
+	at org.eclipse.help.internal.base.remote.RemoteExtensionProvider.getContentExtensions(RemoteExtensionProvider.java:51)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.loadExtensions(ContentExtensionManager.java:100)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.getExtensions(ContentExtensionManager.java:67)
+	at org.eclipse.help.internal.dynamic.ExtensionResolver.resolveExtension(ExtensionResolver.java:61)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handleExtension(ExtensionHandler.java:63)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handle(ExtensionHandler.java:44)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:44)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:57)
+	at org.eclipse.help.internal.toc.TocAssembler.process(TocAssembler.java:251)
+	at org.eclipse.help.internal.toc.TocAssembler.assemble(TocAssembler.java:79)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:310)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:68)
+	at org.eclipse.help.HelpSystem.getTocs(HelpSystem.java:71)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.searchKeywordTopic(IlrOpenDocumentationAction.java:105)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction.access$0(IlrOpenDocumentationAction.java:104)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:98)
+	at ilog.rules.studio.irleditor.actions.IlrOpenDocumentationAction$1.call(IlrOpenDocumentationAction.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:818)
